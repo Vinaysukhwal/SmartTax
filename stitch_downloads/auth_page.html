@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SmartTax - Precision in Compliance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "on-surface-variant": "#ccc3d8",
+                        "inverse-primary": "#732ee4",
+                        "tertiary": "#ffb784",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#d2bbff",
+                        "outline-variant": "#4a4455",
+                        "surface-container-highest": "#37333e",
+                        "primary-fixed": "#eaddff",
+                        "outline": "#958da1",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#15121b",
+                        "secondary": "#ddb7ff",
+                        "on-surface": "#e8dfee",
+                        "on-secondary-fixed": "#2c0051",
+                        "on-tertiary-container": "#ffe0cd",
+                        "on-background": "#e8dfee",
+                        "on-primary": "#3f008e",
+                        "surface-container": "#221e28",
+                        "secondary-container": "#6f00be",
+                        "tertiary-fixed": "#ffdcc6",
+                        "primary": "#d2bbff",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "surface-bright": "#3c3742",
+                        "surface-container-low": "#1d1a24",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "inverse-surface": "#e8dfee",
+                        "on-primary-fixed": "#25005a",
+                        "on-primary-container": "#ede0ff",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "surface-tint": "#d2bbff",
+                        "on-tertiary-fixed": "#301400",
+                        "background": "#15121b",
+                        "surface-container-high": "#2c2833",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#332f39",
+                        "tertiary-container": "#a15100",
+                        "secondary-fixed": "#f0dbff",
+                        "surface": "#15121b",
+                        "primary-container": "#7c3aed",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "surface-container-lowest": "#100d16",
+                        "on-secondary": "#490080",
+                        "on-tertiary": "#4f2500",
+                        "on-secondary-container": "#d6a9ff",
+                        "surface-variant": "#37333e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "code-sm": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "code-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    },
+                    "animation": {
+                        "float": "float 6s ease-in-out infinite",
+                        "pulse-soft": "pulse-soft 3s ease-in-out infinite",
+                        "fade-up": "fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards"
+                    },
+                    "keyframes": {
+                        "float": {
+                            "0%, 100%": { transform: "translateY(0)" },
+                            "50%": { transform: "translateY(-20px)" }
+                        },
+                        "pulse-soft": {
+                            "0%, 100%": { boxShadow: "0 0 15px rgba(124, 58, 237, 0.3)" },
+                            "50%": { boxShadow: "0 0 30px rgba(124, 58, 237, 0.6)" }
+                        },
+                        "fade-up": {
+                            "0%": { opacity: "0", transform: "translateY(20px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" }
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(34, 30, 40, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(210, 187, 255, 0.1);
+            position: relative;
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(210, 187, 255, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .glass-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, rgba(210,187,255,0.2) 0%, rgba(210,187,255,0) 50%, rgba(210,187,255,0.05) 100%) border-box;
+        }
+        .accent-glow:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+            border-color: #7c3aed;
+            transform: scale(1.01);
+        }
+        .tab-transition {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .stagger-item {
+            opacity: 0;
+        }
+        .fade-exit { opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+        .fade-enter { opacity: 1; transition: opacity 0.3s ease; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-delay: -1ms !important;
+                animation-duration: 1ms !important;
+                animation-iteration-count: 1 !important;
+                background-attachment: initial !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0s !important;
+                transition-delay: 0s !important;
+            }
+            .animate-float, .animate-pulse-soft { animation: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden min-h-screen">
+<main class="flex min-h-screen">
+<!-- Left Side: Visual & Trust -->
+<section class="hidden lg:flex w-1/2 flex-col justify-between p-margin-desktop bg-surface-container-lowest relative overflow-hidden animate-fade-up" id="leftSide">
+<!-- Background Glow -->
+<div class="absolute -top-40 -left-40 w-96 h-96 bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-secondary-container/10 blur-[150px] rounded-full"></div>
+<!-- Header -->
+<div class="z-10 flex items-center gap-3">
+<img alt="SmartTax Logo" class="h-10 w-auto rounded-md" src="https://lh3.googleusercontent.com/aida/ADBb0ugepdVJCpMYQLdgI3piR4ssIVhGHpDRqJPsM0ijrqVei8MMk8Aa8g0j4o78toErnm2gNHKZda9kvBe-ywZQMxGQseQX02_cRLwowqSvrWyX-kTbgrjxsd1FzOW_Sp4XZmZ4DXy2WdMoDs1VKrtZ4fa3xafLHrWQf6ijrHHk3ZK5hC7YITy6T8gWFEoq7Z5SBhfsZRypAp9M9BUM9FBEsSYzRaXafWrth0uRGWlLTZdH7aU9JauXsEmeqgs"/>
+<span class="font-headline-md text-headline-md text-primary tracking-tight">SmartTax</span>
+</div>
+<!-- Hero Image Section -->
+<div class="flex-1 flex flex-col items-center justify-center z-10 px-12 text-center">
+<div class="relative group">
+<div class="absolute inset-0 bg-primary/20 blur-[60px] rounded-full scale-90 group-hover:scale-110 transition-transform duration-1000"></div>
+<img alt="Futuristic Glass Tax Documents" class="relative w-full max-w-lg object-contain drop-shadow-[0_20px_50px_rgba(124,58,237,0.3)] animate-float" src="https://lh3.googleusercontent.com/aida/ADBb0ujER9lJH887eupa0rl6KzbkpZids4-ysiBI6jcwOfKYEjYyOs1DX5279bKFSPrPz2wagL_HNQMAkFT_96CIs8OiI4YpAVQ9G7lAotpJAnZsSyVgR6QnXAxWAte9ybcCBclgbszZWh_4RAGl9em3Ij7sBzbxzIiD8tkG9IpPYHvI45WwyISWBFVU63c93yxCK2PnolYP0VrthVkAU9lu9FJxsQTUzuFlF9Ikdetmr-WmKNWIeRVXggVekHA"/>
+</div>
+<h2 class="mt-12 font-headline-lg text-headline-lg text-on-surface">Modernizing Financial Compliance</h2>
+<p class="mt-4 text-on-surface-variant font-body-lg max-w-md">Experience the next generation of tax filing with real-time analytics and intelligent automation.</p>
+</div>
+<!-- Trust Metrics -->
+<div class="z-10 flex items-center justify-center gap-12 py-8 bg-surface-container/30 backdrop-blur-sm rounded-2xl border border-outline-variant/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+<div class="text-left">
+<p class="font-headline-md text-primary text-xl leading-none">1M+</p>
+<p class="text-label-md text-on-surface-variant">Trusted Taxpayers</p>
+</div>
+</div>
+<div class="w-px h-10 bg-outline-variant/20"></div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">lock</span>
+<div class="text-left">
+<p class="font-headline-md text-primary text-xl leading-none">AES-256</p>
+<p class="text-label-md text-on-surface-variant">Secure &amp; Encrypted</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Side: Auth Form -->
+<section class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-margin-mobile md:p-margin-desktop bg-surface relative">
+<!-- Mobile Logo -->
+<div class="lg:hidden absolute top-8 left-8 flex items-center gap-2">
+<img alt="SmartTax Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ugepdVJCpMYQLdgI3piR4ssIVhGHpDRqJPsM0ijrqVei8MMk8Aa8g0j4o78toErnm2gNHKZda9kvBe-ywZQMxGQseQX02_cRLwowqSvrWyX-kTbgrjxsd1FzOW_Sp4XZmZ4DXy2WdMoDs1VKrtZ4fa3xafLHrWQf6ijrHHk3ZK5hC7YITy6T8gWFEoq7Z5SBhfsZRypAp9M9BUM9FBEsSYzRaXafWrth0uRGWlLTZdH7aU9JauXsEmeqgs"/>
+<span class="font-headline-md text-headline-md text-primary tracking-tight">SmartTax</span>
+</div>
+<div class="w-full max-w-[480px]">
+<div class="glass-card rounded-[2rem] p-8 sm:p-10 relative overflow-hidden glass-border-gradient opacity-0 transition-opacity duration-700" id="authCard">
+<!-- Form Tabs -->
+<div class="relative flex bg-surface-container-high/50 rounded-xl p-1 mb-10 stagger-item">
+<div class="absolute h-[calc(100%-8px)] top-1 w-1/2 bg-primary-container rounded-lg tab-transition shadow-lg shadow-primary/20" id="tabHighlight"></div>
+<button class="relative z-10 w-1/2 py-2.5 font-label-md text-label-md text-on-primary transition-colors duration-300" id="loginTabBtn" onclick="switchTab('login')">Login</button>
+<button class="relative z-10 w-1/2 py-2.5 font-label-md text-label-md text-on-surface-variant transition-colors duration-300" id="registerTabBtn" onclick="switchTab('register')">Register</button>
+</div>
+<!-- Forms Container -->
+<div class="relative overflow-hidden stagger-item">
+<!-- Login Form -->
+<div class="w-full transition-all duration-300" id="loginForm">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-2">Welcome Back</h3>
+<p class="text-on-surface-variant font-body-md mb-8">Access your financial dashboard</p>
+<form class="space-y-5" onsubmit="return false">
+<div class="space-y-2 stagger-item">
+<label class="block text-label-md font-label-md text-on-surface-variant ml-1">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full bg-surface-container-lowest/50 border border-outline-variant/30 rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-outline accent-glow transition-all duration-300" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2 stagger-item">
+<div class="flex justify-between items-center ml-1">
+<label class="block text-label-md font-label-md text-on-surface-variant">Password</label>
+<a class="text-label-md text-primary hover:underline transition-all" href="#">Forgot Password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full bg-surface-container-lowest/50 border border-outline-variant/30 rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-outline accent-glow transition-all duration-300" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary py-4 rounded-xl font-headline-md text-label-md shadow-lg shadow-primary/30 animate-pulse-soft hover:brightness-125 hover:scale-105 active:scale-95 transition-all duration-300 stagger-item">
+                                Sign In
+                            </button>
+</form>
+</div>
+<!-- Register Form (Hidden by default) -->
+<div class="w-full absolute top-0 left-0 opacity-0 pointer-events-none transition-all duration-300" id="registerForm">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-2">Join SmartTax</h3>
+<p class="text-on-surface-variant font-body-md mb-8">Start your journey to precision filing</p>
+<form class="space-y-5" onsubmit="return false">
+<div class="space-y-2">
+<label class="block text-label-md font-label-md text-on-surface-variant ml-1">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">person</span>
+<input class="w-full bg-surface-container-lowest/50 border border-outline-variant/30 rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-outline accent-glow transition-all duration-300" placeholder="John Doe" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-label-md font-label-md text-on-surface-variant ml-1">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full bg-surface-container-lowest/50 border border-outline-variant/30 rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-outline accent-glow transition-all duration-300" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-label-md font-label-md text-on-surface-variant ml-1">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full bg-surface-container-lowest/50 border border-outline-variant/30 rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-outline accent-glow transition-all duration-300" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary py-4 rounded-xl font-headline-md text-label-md shadow-lg shadow-primary/30 animate-pulse-soft hover:brightness-125 hover:scale-105 active:scale-95 transition-all duration-300">
+                                Create Account
+                            </button>
+</form>
+</div>
+</div>
+<!-- Divider -->
+<div class="relative my-10 stagger-item">
+<div class="absolute inset-0 flex items-center"><div class="w-full border-t border-outline-variant/20"></div></div>
+<div class="relative flex justify-center text-label-md"><span class="bg-surface-container-high px-4 text-on-surface-variant font-label-md">Or continue with</span></div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-4 stagger-item">
+<button class="flex items-center justify-center gap-2 bg-surface-container-high hover:bg-surface-bright border border-outline-variant/30 py-3 rounded-xl transition-all duration-300 group">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="text-label-md font-label-md text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 bg-surface-container-high hover:bg-surface-bright border border-outline-variant/30 py-3 rounded-xl transition-all duration-300 group">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.75.8.01 2.01-.84 3.41-.69 1.58.17 2.72.76 3.41 1.76-3.14 1.88-2.63 6.34.46 7.6-.68 1.73-1.61 3.51-2.36 4.55zM12.03 7.25c-.02-2.13 1.74-3.95 3.75-4.25.26 2.44-2.12 4.41-3.75 4.25z"></path>
+</svg>
+<span class="text-label-md font-label-md text-on-surface">Apple</span>
+</button>
+</div>
+<p class="mt-8 text-center text-code-sm text-on-surface-variant stagger-item">
+                    By continuing, you agree to SmartTax's <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+                </p>
+</div>
+</div>
+</section>
+</main>
+<footer class="absolute bottom-6 left-1/2 -translate-x-1/2 w-full max-w-[1280px] px-margin-mobile flex flex-col md:flex-row justify-center items-center gap-4 text-on-surface-variant/40 pointer-events-none">
+<span class="text-label-md font-label-md">© 2024 SmartTax. Precision in Compliance.</span>
+</footer>
+<script>
+    // Tab switching logic
+    function switchTab(tab) {
+        const highlight = document.getElementById('tabHighlight');
+        const loginBtn = document.getElementById('loginTabBtn');
+        const registerBtn = document.getElementById('registerTabBtn');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        if (tab === 'login') {
+            highlight.style.transform = 'translateX(0%)';
+            loginBtn.classList.add('text-on-primary');
+            loginBtn.classList.remove('text-on-surface-variant');
+            registerBtn.classList.add('text-on-surface-variant');
+            registerBtn.classList.remove('text-on-primary');
+            
+            // Cross-fade
+            loginForm.style.opacity = '1';
+            loginForm.style.pointerEvents = 'auto';
+            loginForm.style.transform = 'translateY(0)';
+            
+            registerForm.style.opacity = '0';
+            registerForm.style.pointerEvents = 'none';
+            registerForm.style.transform = 'translateY(10px)';
+        } else {
+            highlight.style.transform = 'translateX(100%)';
+            registerBtn.classList.add('text-on-primary');
+            registerBtn.classList.remove('text-on-surface-variant');
+            loginBtn.classList.add('text-on-surface-variant');
+            loginBtn.classList.remove('text-on-primary');
+
+            // Cross-fade
+            registerForm.style.opacity = '1';
+            registerForm.style.pointerEvents = 'auto';
+            registerForm.style.transform = 'translateY(0)';
+            
+            loginForm.style.opacity = '0';
+            loginForm.style.pointerEvents = 'none';
+            loginForm.style.transform = 'translateY(10px)';
+        }
+    }
+
+    // Mouse tracking for glow effect
+    const authCard = document.getElementById('authCard');
+    authCard.addEventListener('mousemove', (e) => {
+        const rect = authCard.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        authCard.style.setProperty('--mouse-x', `${x}%`);
+        authCard.style.setProperty('--mouse-y', `${y}%`);
+    });
+
+    // Entrance animations staggered sequence
+    window.addEventListener('DOMContentLoaded', () => {
+        const card = document.getElementById('authCard');
+        const items = document.querySelectorAll('.stagger-item');
+        
+        // Show card first
+        setTimeout(() => {
+            card.style.opacity = '1';
+            
+            // Stagger internal items
+            items.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('animate-fade-up');
+                }, 100 + (index * 80));
+            });
+        }, 300);
+    });
+</script>
+</body></html>

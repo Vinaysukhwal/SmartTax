@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SmartTax India | Interactive Tax Calculator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#ccc3d8",
+                        "secondary-fixed": "#f0dbff",
+                        "background": "#0f0f0f",
+                        "on-surface": "#e8dfee",
+                        "secondary": "#ddb7ff",
+                        "tertiary": "#ffb784",
+                        "primary-fixed": "#eaddff",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "on-tertiary-fixed": "#301400",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "on-primary-container": "#ede0ff",
+                        "on-background": "#e8dfee",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "surface-container-low": "#1d1a24",
+                        "on-tertiary-container": "#ffe0cd",
+                        "on-tertiary": "#4f2500",
+                        "surface-container-highest": "#37333e",
+                        "on-primary": "#3f008e",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#d2bbff",
+                        "secondary-container": "#6f00be",
+                        "surface-container-high": "#2c2833",
+                        "inverse-on-surface": "#332f39",
+                        "surface-dim": "#15121b",
+                        "surface-container": "#221e28",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "outline-variant": "#4a4455",
+                        "surface": "#15121b",
+                        "surface-variant": "#37333e",
+                        "on-secondary-fixed": "#2c0051",
+                        "on-secondary": "#490080",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#3c3742",
+                        "surface-tint": "#d2bbff",
+                        "on-secondary-container": "#d6a9ff",
+                        "tertiary-container": "#a15100",
+                        "inverse-primary": "#732ee4",
+                        "outline": "#958da1",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-container-lowest": "#100d16",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "inverse-surface": "#e8dfee",
+                        "primary-container": "#7c3aed",
+                        "primary": "#d2bbff",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#25005a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "code-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "code-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0f0f0f;
+            color: #e8dfee;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(34, 30, 40, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(149, 141, 161, 0.1);
+            position: relative;
+        }
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(210, 187, 255, 0.2), transparent 40%, transparent 60%, rgba(124, 58, 237, 0.1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .glow-input:focus {
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+            border-color: #7c3aed;
+        }
+        .accent-linear {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+        }
+        .new-regime-border {
+            border: 2px solid rgba(74, 222, 128, 0.4);
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.1);
+        }
+        .bar-chart-fill {
+            transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 2s infinite ease-in-out;
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.95; }
+        }
+        .count-up {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">SmartTax</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-highest/50 p-2 rounded-full transition-colors">notifications</span>
+<div class="w-8 h-8 rounded-full bg-primary-container/30 border border-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="mb-12">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-2 text-on-surface">Income Tax Calculator</h1>
+<p class="text-on-surface-variant font-body-md text-body-md">Financial Year 2025-26 | Assessment Year 2026-27</p>
+</section>
+<!-- Main Calculator Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left: Input Panel -->
+<div class="lg:col-span-5 space-y-6">
+<div class="glass-card rounded-xl p-6">
+<h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                        Enter Details
+                    </h2>
+<!-- Income Sources -->
+<div class="space-y-4 mb-8">
+<label class="block text-label-md font-label-md text-on-surface-variant mb-4 uppercase tracking-wider">Income Sources</label>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface">Salary Income</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-bold">₹</span>
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg py-3 pl-10 pr-4 glow-input outline-none transition-all text-on-surface focus:ring-0" id="salary" placeholder="0" type="number"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface">House Property Income</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary">₹</span>
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg py-3 pl-10 pr-4 glow-input outline-none transition-all text-on-surface focus:ring-0" id="house" placeholder="0" type="number"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface">Capital Gains</label>
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg py-3 px-4 glow-input outline-none transition-all text-on-surface focus:ring-0" id="capital" placeholder="₹ 0" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface">Other Income</label>
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg py-3 px-4 glow-input outline-none transition-all text-on-surface focus:ring-0" id="other" placeholder="₹ 0" type="number"/>
+</div>
+</div>
+</div>
+<!-- Deductions -->
+<div class="space-y-4 mb-8">
+<label class="block text-label-md font-label-md text-on-surface-variant mb-4 uppercase tracking-wider">Deductions &amp; Exemptions</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface">Section 80C (Max 1.5L)</label>
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg py-3 px-4 glow-input outline-none transition-all text-on-surface focus:ring-0" id="sec80c" max="150000" placeholder="₹ 0" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface">Section 80D (Health)</label>
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg py-3 px-4 glow-input outline-none transition-all text-on-surface focus:ring-0" id="sec80d" placeholder="₹ 0" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface">80CCD (NPS)</label>
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg py-3 px-4 glow-input outline-none transition-all text-on-surface focus:ring-0" id="sec80ccd" placeholder="₹ 0" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface">HRA Exemption</label>
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg py-3 px-4 glow-input outline-none transition-all text-on-surface focus:ring-0" id="hra" placeholder="₹ 0" type="number"/>
+</div>
+</div>
+</div>
+<button class="w-full accent-linear text-white font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(124,58,237,0.4)] active:scale-[0.98] transition-all hover:brightness-110 flex items-center justify-center gap-2" onclick="calculateTax()">
+<span class="material-symbols-outlined">calculate</span>
+                        Calculate Tax
+                    </button>
+</div>
+<!-- Subtle Decorative Element -->
+<div class="hidden lg:block h-32 relative">
+<div class="absolute inset-0 bg-primary/5 rounded-2xl blur-3xl"></div>
+</div>
+</div>
+<!-- Right: Results Panel -->
+<div class="lg:col-span-7 space-y-6">
+<div class="glass-card rounded-xl p-8 h-full">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">Your Tax Summary</h2>
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-tertiary text-sm">history</span>
+<span class="text-label-md font-label-md">Last Updated: Just Now</span>
+</div>
+</div>
+<!-- Comparison Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+<!-- Old Regime -->
+<div class="glass-card rounded-2xl p-6 transition-all duration-500 overflow-hidden" id="old-regime-card">
+<div class="text-label-md font-label-md text-on-surface-variant mb-4 flex items-center justify-between">
+                                OLD REGIME
+                                <span class="material-symbols-outlined text-sm">info</span>
+</div>
+<div class="space-y-4">
+<div>
+<p class="text-on-surface-variant text-xs uppercase tracking-tighter">Taxable Income</p>
+<p class="text-headline-md font-bold text-on-surface count-up" id="old-taxable">₹ 0</p>
+</div>
+<div class="pt-4 border-t border-outline-variant/20">
+<p class="text-on-surface-variant text-xs uppercase tracking-tighter">Estimated Tax</p>
+<p class="text-display-lg font-display-lg text-white count-up" id="old-tax-val">₹ 0</p>
+</div>
+</div>
+</div>
+<!-- New Regime -->
+<div class="glass-card rounded-2xl p-6 new-regime-border relative transition-all duration-500 overflow-hidden" id="new-regime-card">
+<div class="absolute top-4 right-4 bg-green-500/10 text-green-400 text-[10px] font-bold px-3 py-1 rounded-full border border-green-500/20 flex items-center gap-1 animate-pulse-subtle">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                BEST FOR YOU
+                            </div>
+<div class="text-label-md font-label-md text-on-surface-variant mb-4">NEW REGIME</div>
+<div class="space-y-4">
+<div>
+<p class="text-on-surface-variant text-xs uppercase tracking-tighter">Taxable Income</p>
+<p class="text-headline-md font-bold text-on-surface count-up" id="new-taxable">₹ 0</p>
+</div>
+<div class="pt-4 border-t border-outline-variant/20">
+<p class="text-on-surface-variant text-xs uppercase tracking-tighter">Estimated Tax</p>
+<p class="text-display-lg font-display-lg text-primary count-up" id="new-tax-val">₹ 0</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Comparison -->
+<div class="space-y-6 mb-10">
+<label class="block text-label-md font-label-md text-on-surface-variant uppercase">Tax Comparison Chart</label>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-xs text-on-surface-variant px-1">
+<span>Old Regime</span>
+<span id="old-bar-val">₹ 0</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-3 overflow-hidden">
+<div class="bar-chart-fill h-full bg-on-surface-variant/40" id="old-bar" style="width: 0%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs text-primary px-1">
+<span class="font-bold">New Regime</span>
+<span class="font-bold" id="new-bar-val">₹ 0</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-3 overflow-hidden">
+<div class="bar-chart-fill h-full accent-linear" id="new-bar" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary Banner -->
+<div class="opacity-0 transition-opacity duration-700 bg-green-500/10 border border-green-500/20 rounded-xl p-4 flex items-center justify-between" id="savings-banner">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">savings</span>
+</div>
+<div>
+<p class="text-green-400 font-bold text-body-lg" id="savings-text">You save ₹0 with New Regime</p>
+<p class="text-green-400/70 text-xs">Switch to New Regime for maximum benefits this year.</p>
+</div>
+</div>
+<button class="bg-green-500 text-black px-4 py-2 rounded-lg text-label-md font-bold hover:bg-green-400 transition-colors">Apply Now</button>
+</div>
+<!-- Gross Details -->
+<div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-outline-variant/20 pt-8">
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-wider mb-1">Gross Total</p>
+<p class="text-body-lg font-bold count-up" id="gross-val">₹ 0</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-wider mb-1">Deductions</p>
+<p class="text-body-lg font-bold count-up" id="deduction-val">₹ 0</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-wider mb-1">Surcharge</p>
+<p class="text-body-lg font-bold">₹ 0</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-wider mb-1">Cess (4%)</p>
+<p class="text-body-lg font-bold count-up" id="cess-val">₹ 0</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Extra Info Section -->
+<section class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-card p-6 rounded-xl flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">bolt</span>
+<div>
+<h4 class="font-headline-md text-headline-md mb-2 text-sm">Instant Calculation</h4>
+<p class="text-on-surface-variant text-sm">Real-time computation based on latest 2025 Budget updates.</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl flex items-start gap-4">
+<span class="material-symbols-outlined text-tertiary text-3xl">shield</span>
+<div>
+<h4 class="font-headline-md text-headline-md mb-2 text-sm">Privacy First</h4>
+<p class="text-on-surface-variant text-sm">Your financial data never leaves your device's browser.</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl flex items-start gap-4">
+<span class="material-symbols-outlined text-green-400 text-3xl">recommend</span>
+<div>
+<h4 class="font-headline-md text-headline-md mb-2 text-sm">Smart Advice</h4>
+<p class="text-on-surface-variant text-sm">Personalized insights on where you can save more tax.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Anchor -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_12px_rgba(124,58,237,0.1)] h-20 px-2 pb-safe flex justify-around items-center">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container/30 text-primary rounded-xl px-4 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Filing</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-label-md text-label-md">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<script>
+        function animateValue(id, start, end, duration) {
+            if (start === end) return;
+            const obj = document.getElementById(id);
+            const range = end - start;
+            let current = start;
+            const increment = end > start ? Math.ceil(range / (duration / 10)) : Math.floor(range / (duration / 10));
+            const timer = setInterval(function() {
+                current += increment;
+                if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                obj.innerText = "₹ " + current.toLocaleString('en-IN');
+            }, 10);
+        }
+
+        function calculateTax() {
+            // Get inputs
+            const salary = parseFloat(document.getElementById('salary').value) || 0;
+            const house = parseFloat(document.getElementById('house').value) || 0;
+            const capital = parseFloat(document.getElementById('capital').value) || 0;
+            const other = parseFloat(document.getElementById('other').value) || 0;
+            
+            const sec80c = Math.min(parseFloat(document.getElementById('sec80c').value) || 0, 150000);
+            const sec80d = parseFloat(document.getElementById('sec80d').value) || 0;
+            const sec80ccd = parseFloat(document.getElementById('sec80ccd').value) || 0;
+            const hra = parseFloat(document.getElementById('hra').value) || 0;
+
+            const gross = salary + house + capital + other;
+            const totalDeductions = sec80c + sec80d + sec80ccd + hra + 50000; // +50k Standard deduction for Old
+            
+            // Basic Mock Calculation Logic (Approximate Slabs)
+            let oldTaxable = Math.max(0, gross - totalDeductions);
+            let newTaxable = Math.max(0, gross - 75000); // New regime std deduction 2025
+
+            // Simple simplified tax logic for visual demo
+            let oldTax = oldTaxable * 0.25; 
+            let newTax = newTaxable * 0.18;
+
+            if (gross < 500000) { oldTax = 0; newTax = 0; }
+            if (newTax < 0) newTax = 0;
+            if (oldTax < 0) oldTax = 0;
+
+            const savings = Math.max(0, Math.floor(oldTax - newTax));
+
+            // Update UI with animations
+            animateValue('gross-val', 0, gross, 500);
+            animateValue('deduction-val', 0, totalDeductions, 500);
+            animateValue('old-taxable', 0, oldTaxable, 800);
+            animateValue('new-taxable', 0, newTaxable, 800);
+            animateValue('old-tax-val', 0, Math.floor(oldTax), 1000);
+            animateValue('new-tax-val', 0, Math.floor(newTax), 1000);
+
+            // Update Bars
+            const maxTax = Math.max(oldTax, newTax, 1);
+            const oldWidth = (oldTax / maxTax) * 100;
+            const newWidth = (newTax / maxTax) * 100;
+
+            document.getElementById('old-bar').style.width = oldWidth + '%';
+            document.getElementById('new-bar').style.width = newWidth + '%';
+            document.getElementById('old-bar-val').innerText = "₹ " + Math.floor(oldTax).toLocaleString('en-IN');
+            document.getElementById('new-bar-val').innerText = "₹ " + Math.floor(newTax).toLocaleString('en-IN');
+
+            // Savings Banner
+            const banner = document.getElementById('savings-banner');
+            const savingsText = document.getElementById('savings-text');
+            if (savings > 0) {
+                savingsText.innerText = `You save ₹${savings.toLocaleString('en-IN')} with New Regime`;
+                banner.classList.remove('opacity-0');
+            } else {
+                banner.classList.add('opacity-0');
+            }
+
+            // Pulse effect on result
+            const newCard = document.getElementById('new-regime-card');
+            newCard.classList.add('scale-105');
+            setTimeout(() => newCard.classList.remove('scale-105'), 300);
+        }
+
+        // Initialize with default zero
+        window.onload = () => {
+            calculateTax();
+        }
+    </script>
+</body></html>

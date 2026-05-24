@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SmartTax India - Document Vault</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f;
+            color: #e8dfee;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(21, 18, 27, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(210, 187, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: #a855f7;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .accent-gradient {
+            background: linear-gradient(135deg, #7c3aed 0%, #d2bbff 100%);
+        }
+
+        .glass-border-gradient {
+            border-image: linear-gradient(to bottom right, rgba(210, 187, 255, 0.3), transparent) 1;
+        }
+
+        @keyframes staggerFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-stagger {
+            animation: staggerFadeIn 0.6s ease forwards;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4a4455;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffdcc6",
+                        "tertiary-container": "#a15100",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "on-surface-variant": "#ccc3d8",
+                        "secondary": "#ddb7ff",
+                        "primary": "#d2bbff",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e8dfee",
+                        "on-secondary-container": "#d6a9ff",
+                        "on-primary-fixed": "#25005a",
+                        "primary-container": "#7c3aed",
+                        "inverse-primary": "#732ee4",
+                        "tertiary": "#ffb784",
+                        "outline-variant": "#4a4455",
+                        "on-secondary": "#490080",
+                        "background": "#15121b",
+                        "on-tertiary-fixed": "#301400",
+                        "on-tertiary": "#4f2500",
+                        "surface-container-high": "#2c2833",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "surface-dim": "#15121b",
+                        "on-primary-container": "#ede0ff",
+                        "surface-variant": "#37333e",
+                        "surface-tint": "#d2bbff",
+                        "secondary-container": "#6f00be",
+                        "on-primary": "#3f008e",
+                        "primary-fixed": "#eaddff",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "on-secondary-fixed": "#2c0051",
+                        "surface-container-lowest": "#100d16",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "outline": "#958da1",
+                        "inverse-on-surface": "#332f39",
+                        "surface-bright": "#3c3742",
+                        "secondary-fixed": "#f0dbff",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-error": "#690005",
+                        "surface": "#15121b",
+                        "on-background": "#e8dfee",
+                        "surface-container-highest": "#37333e",
+                        "surface-container": "#221e28",
+                        "on-tertiary-container": "#ffe0cd",
+                        "surface-container-low": "#1d1a24",
+                        "error-container": "#93000a",
+                        "on-surface": "#e8dfee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary tracking-tight">SmartTax India</span>
+</div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Home</a>
+<a class="text-primary font-bold hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Vault</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Reports</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">JD</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-10 pb-32">
+<!-- Header Section -->
+<section class="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Document vault</h1>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Store all your tax documents securely</p>
+</div>
+<!-- Stats Bar -->
+<div class="glass-card rounded-xl p-4 flex flex-wrap gap-8">
+<div>
+<p class="text-label-md font-label-md text-outline">Total Docs</p>
+<p class="text-headline-md font-headline-md text-primary">12</p>
+</div>
+<div class="border-l border-outline-variant/20 pl-8">
+<p class="text-label-md font-label-md text-outline">Storage</p>
+<p class="text-headline-md font-headline-md text-on-surface">45MB <span class="text-body-md text-outline">/ 500MB</span></p>
+<div class="w-32 h-1.5 bg-surface-container-high rounded-full mt-2">
+<div class="h-full accent-gradient rounded-full" style="width: 9%"></div>
+</div>
+</div>
+<div class="border-l border-outline-variant/20 pl-8">
+<p class="text-label-md font-label-md text-outline">Last Uploaded</p>
+<p class="text-headline-md font-headline-md text-on-surface">Today</p>
+</div>
+</div>
+</section>
+<!-- Upload Area -->
+<section class="mb-10">
+<div class="relative group cursor-pointer">
+<div class="absolute -inset-0.5 accent-gradient opacity-20 group-hover:opacity-40 transition duration-300 blur rounded-2xl"></div>
+<div class="relative bg-surface-container-lowest border-2 border-dashed border-outline-variant/50 rounded-2xl p-12 flex flex-col items-center justify-center text-center transition-all hover:border-primary">
+<div class="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<h3 class="text-headline-md font-headline-md mb-2">Drag and drop files here or click to upload</h3>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-md">Supported formats: PDF, JPG, PNG. Max file size 10MB.</p>
+</div>
+</div>
+</section>
+<!-- Search & Filters -->
+<section class="mb-8 space-y-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface-container border border-outline-variant/30 rounded-full py-3 pl-12 pr-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Search your vault..." type="text"/>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low p-1 rounded-lg">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="grid_view">grid_view</span></button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="list">list</span></button>
+</div>
+</div>
+<div class="flex gap-8 border-b border-outline-variant/10 overflow-x-auto custom-scrollbar">
+<button class="pb-4 text-primary font-bold border-b-2 border-primary whitespace-nowrap">All</button>
+<button class="pb-4 text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">Form 16</button>
+<button class="pb-4 text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">Form 26AS</button>
+<button class="pb-4 text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">AIS/TIS</button>
+<button class="pb-4 text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">Others</button>
+</div>
+</section>
+<!-- Document Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="glass-card rounded-2xl p-5 animate-stagger" style="animation-delay: 0.1s;">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-error/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-error" data-icon="picture_as_pdf" style="font-variation-settings: 'FILL' 1;">picture_as_pdf</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+</div>
+<h4 class="text-body-lg font-bold text-on-surface mb-1 truncate">Form_16_FY23-24.pdf</h4>
+<div class="flex items-center gap-3 text-label-md font-label-md text-on-surface-variant">
+<span>12 May 2024</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>1.2MB</span>
+</div>
+<div class="mt-6 flex gap-2">
+<button class="flex-1 py-2 rounded-lg bg-surface-variant text-on-surface hover:bg-outline-variant transition-colors text-label-md font-label-md">View</button>
+<button class="p-2 rounded-lg bg-primary-container/10 text-primary hover:bg-primary-container/20 transition-colors"><span class="material-symbols-outlined text-sm" data-icon="download">download</span></button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-2xl p-5 animate-stagger" style="animation-delay: 0.2s;">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="description" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+</div>
+<h4 class="text-body-lg font-bold text-on-surface mb-1 truncate">Investment_Proofs.pdf</h4>
+<div class="flex items-center gap-3 text-label-md font-label-md text-on-surface-variant">
+<span>10 May 2024</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>3.5MB</span>
+</div>
+<div class="mt-6 flex gap-2">
+<button class="flex-1 py-2 rounded-lg bg-surface-variant text-on-surface hover:bg-outline-variant transition-colors text-label-md font-label-md">View</button>
+<button class="p-2 rounded-lg bg-primary-container/10 text-primary hover:bg-primary-container/20 transition-colors"><span class="material-symbols-outlined text-sm" data-icon="download">download</span></button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card rounded-2xl p-5 animate-stagger" style="animation-delay: 0.3s;">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-tertiary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="receipt_long" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined" data-icon="more_vert">more_vert</span></button>
+</div>
+<h4 class="text-body-lg font-bold text-on-surface mb-1 truncate">Rent_Receipts_Q4.pdf</h4>
+<div class="flex items-center gap-3 text-label-md font-label-md text-on-surface-variant">
+<span>28 Apr 2024</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>850KB</span>
+</div>
+<div class="mt-6 flex gap-2">
+<button class="flex-1 py-2 rounded-lg bg-surface-variant text-on-surface hover:bg-outline-variant transition-colors text-label-md font-label-md">View</button>
+<button class="p-2 rounded-lg bg-primary-container/10 text-primary hover:bg-primary-container/20 transition-colors"><span class="material-symbols-outlined text-sm" data-icon="download">download</span></button>
+</div>
+</div>
+</section>
+<!-- Decorative Glow -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container-low/90 backdrop-blur-lg border-t border-outline-variant/10 flex justify-around items-center px-4 pb-4 pt-2 shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1.5 scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="folder_shared" style="font-variation-settings: 'FILL' 1;">folder_shared</span>
+<span class="text-label-md font-label-md">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-md font-label-md">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for upload area
+        const uploadArea = document.querySelector('.relative.group.cursor-pointer');
+        if (uploadArea) {
+            uploadArea.addEventListener('click', () => {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.click();
+            });
+        }
+
+        // Search highlight effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.style.borderColor = '#a855f7';
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.style.borderColor = 'rgba(74, 68, 85, 0.3)';
+        });
+    </script>
+</body></html>

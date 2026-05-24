@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SmartTax - Sign In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#f0dbff",
+                    "surface-bright": "#3c3742",
+                    "tertiary-fixed": "#ffdcc6",
+                    "secondary-fixed-dim": "#ddb7ff",
+                    "on-surface-variant": "#ccc3d8",
+                    "on-surface": "#e8dfee",
+                    "surface": "#15121b",
+                    "on-primary": "#3f008e",
+                    "secondary-container": "#6f00be",
+                    "inverse-on-surface": "#332f39",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "primary-container": "#7c3aed",
+                    "surface-variant": "#37333e",
+                    "secondary": "#ddb7ff",
+                    "primary": "#d2bbff",
+                    "outline-variant": "#4a4455",
+                    "on-secondary-container": "#d6a9ff",
+                    "on-secondary-fixed-variant": "#6900b3",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#958da1",
+                    "tertiary": "#ffb784",
+                    "on-tertiary-container": "#ffe0cd",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "on-primary-container": "#ede0ff",
+                    "on-background": "#e8dfee",
+                    "inverse-surface": "#e8dfee",
+                    "primary-fixed": "#eaddff",
+                    "surface-container-highest": "#37333e",
+                    "primary-fixed-dim": "#d2bbff",
+                    "on-secondary-fixed": "#2c0051",
+                    "surface-tint": "#d2bbff",
+                    "on-secondary": "#490080",
+                    "surface-container-low": "#1d1a24",
+                    "on-primary-fixed": "#25005a",
+                    "surface-container-lowest": "#100d16",
+                    "error-container": "#93000a",
+                    "on-tertiary": "#4f2500",
+                    "surface-container": "#221e28",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-container-high": "#2c2833",
+                    "background": "#15121b",
+                    "tertiary-container": "#a15100",
+                    "surface-dim": "#15121b",
+                    "error": "#ffb4ab",
+                    "on-error": "#690005",
+                    "inverse-primary": "#732ee4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "code-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "code-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0f0f0f;
+            color: #e8dfee;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(21, 18, 27, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(210, 187, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .accent-gradient-btn {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accent-gradient-btn:hover {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+            transform: scale(1.02);
+        }
+        .glow-overlay {
+            background: radial-gradient(circle at center, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+        }
+        .glass-border-focus:focus-within {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+        }
+        
+        /* Entrance Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInSide {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .stagger-item {
+            opacity: 0;
+            animation: fadeInSide 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .stagger-1 { animation-delay: 0.2s; }
+        .stagger-2 { animation-delay: 0.3s; }
+        .stagger-3 { animation-delay: 0.4s; }
+
+        /* Floating Animation */
+        @keyframes floating3D {
+            0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            50% { transform: translateY(-15px) rotateX(2deg) rotateY(1deg) rotateZ(1deg); }
+            100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+        }
+        .floating-anim {
+            animation: floating3D 6s ease-in-out infinite;
+            transition: transform 0.1s ease-out; /* For parallax smoothness */
+        }
+
+        /* Tab Switch Underline */
+        .tab-underline {
+            position: absolute;
+            bottom: 0;
+            height: 2px;
+            background-color: #d2bbff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Hover Social Buttons */
+        .social-btn {
+            transition: all 0.2s ease;
+        }
+        .social-btn:hover {
+            transform: scale(1.05);
+            background-color: rgba(55, 51, 62, 0.4);
+            border-color: rgba(210, 187, 255, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col md:flex-row">
+<!-- Left Side: Branding & Info (40%) -->
+<aside class="relative w-full md:w-[40%] bg-surface flex flex-col p-margin-mobile md:p-margin-desktop min-h-[400px] md:min-h-screen overflow-hidden">
+<!-- Glow effects -->
+<div class="absolute -top-24 -left-24 w-96 h-96 glow-overlay rounded-full blur-3xl opacity-50"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 glow-overlay rounded-full blur-3xl opacity-30"></div>
+<!-- Logo -->
+<div class="z-10 mb-12 animate-fade-in-up" style="animation-delay: 0.1s;">
+<img alt="SmartTax Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ugepdVJCpMYQLdgI3piR4ssIVhGHpDRqJPsM0ijrqVei8MMk8Aa8g0j4o78toErnm2gNHKZda9kvBe-ywZQMxGQseQX02_cRLwowqSvrWyX-kTbgrjxsd1FzOW_Sp4XZmZ4DXy2WdMoDs1VKrtZ4fa3xafLHrWQf6ijrHHk3ZK5hC7YITy6T8gWFEoq7Z5SBhfsZRypAp9M9BUM9FBEsSYzRaXafWrth0uRGWlLTZdH7aU9JauXsEmeqgs"/>
+</div>
+<!-- Content Cluster -->
+<div class="z-10 flex-1 flex flex-col justify-center">
+<h1 class="font-display-lg text-display-lg mb-8 leading-tight tracking-tight text-on-surface animate-fade-in-up" style="animation-delay: 0.15s;">
+                India's smartest tax filing platform
+            </h1>
+<ul class="space-y-6 mb-12">
+<li class="flex items-center gap-4 group stagger-item stagger-1">
+<div class="flex items-center justify-center w-10 h-10 rounded-xl bg-primary-container/20 text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="task_alt">task_alt</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">File all ITR types free</p>
+</li>
+<li class="flex items-center gap-4 group stagger-item stagger-2">
+<div class="flex items-center justify-center w-10 h-10 rounded-xl bg-primary-container/20 text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">AI powered tax assistant</p>
+</li>
+<li class="flex items-center gap-4 group stagger-item stagger-3">
+<div class="flex items-center justify-center w-10 h-10 rounded-xl bg-primary-container/20 text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">100% secure and encrypted</p>
+</li>
+</ul>
+<!-- Parallax Floating Illustration Container -->
+<div class="relative w-full h-64 md:h-80 flex items-center justify-center perspective-1000" id="parallaxContainer">
+<img alt="Visual Tax Document" class="floating-anim max-w-[80%] drop-shadow-[0_20px_50px_rgba(124,58,237,0.4)]" id="parallaxImage" src="https://lh3.googleusercontent.com/aida/ADBb0ujER9lJH887eupa0rl6KzbkpZids4-ysiBI6jcwOfKYEjYyOs1DX5279bKFSPrPz2wagL_HNQMAkFT_96CIs8OiI4YpAVQ9G7lAotpJAnZsSyVgR6QnXAxWAte9ybcCBclgbszZWh_4RAGl9em3Ij7sBzbxzIiD8tkG9IpPYHvI45WwyISWBFVU63c93yxCK2PnolYP0VrthVkAU9lu9FJxsQTUzuFlF9Ikdetmr-WmKNWIeRVXggVekHA"/>
+</div>
+</div>
+</aside>
+<!-- Right Side: Auth Form (60%) -->
+<main class="w-full md:w-[60%] bg-surface-container-lowest flex items-center justify-center p-margin-mobile md:p-margin-desktop relative">
+<!-- Subtle background noise -->
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#7c3aed 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+<div class="w-full max-w-md z-10 animate-fade-in-up" style="animation-delay: 0.3s;">
+<!-- Glassmorphism Auth Card -->
+<div class="glass-card rounded-[2rem] p-8 md:p-12">
+<!-- Tabs with Sliding Underline -->
+<div class="relative flex gap-8 border-b border-outline-variant/20 mb-8">
+<button class="pb-4 font-label-md text-label-md text-primary transition-all" id="loginTab" onclick="switchTab('login')">
+                        Login
+                    </button>
+<button class="pb-4 font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="registerTab" onclick="switchTab('register')">
+                        Register
+                    </button>
+<div class="tab-underline w-[44px] left-0" id="tabIndicator"></div>
+</div>
+<!-- Form -->
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Email Address</label>
+<div class="glass-border-focus bg-background/50 rounded-xl border border-outline-variant/30 flex items-center px-4 h-14 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-3" data-icon="mail">mail</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface placeholder:text-outline h-full" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between px-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Password</label>
+<a class="font-label-md text-label-md text-primary hover:underline" href="#">Forgot Password?</a>
+</div>
+<div class="glass-border-focus bg-background/50 rounded-xl border border-outline-variant/30 flex items-center px-4 h-14 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-3" data-icon="lock">lock</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface placeholder:text-outline h-full" id="passwordField" placeholder="••••••••" type="password"/>
+<button class="ml-2 text-on-surface-variant hover:text-primary transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" data-icon="visibility" id="passIcon">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full h-14 accent-gradient-btn rounded-xl font-label-md text-label-md text-white font-bold shadow-lg shadow-primary-container/20 active:scale-[0.98]">
+                        Sign In
+                    </button>
+<div class="relative py-4 flex items-center">
+<div class="flex-grow border-t border-outline-variant/20"></div>
+<span class="flex-shrink mx-4 text-on-surface-variant text-label-md font-label-md">Or continue with</span>
+<div class="flex-grow border-t border-outline-variant/20"></div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-4">
+<button class="social-btn h-12 rounded-xl border border-outline-variant/30 bg-surface-variant/20 flex items-center justify-center gap-2 font-label-md text-label-md">
+<img alt="Google" class="w-5 h-5 grayscale opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTfBG3rmiyWUa3f2JUI4BROO4NDvfXZN5_S3a-SMWYkjBO2EM2ktNEuuf85dIoN69Hy53N88BGkTzivxVScaWxntmZZX3MspVkWjo0u1D4wdVB4G4mqxsPzaJfew_pdSKN2duSTsTIVjXesUdMi_docJfYiwazxtSYCyAD-MWbecoXi4q0FMXrF2A3hKsULgCjphKkjmV0PM_3ASAs4DKY4j9pD_tTMtztBmJVcIg81obTfjw51tSB5bB-VPurXDBQgyKdiKPjjcU"/>
+                            Google
+                        </button>
+<button class="social-btn h-12 rounded-xl border border-outline-variant/30 bg-surface-variant/20 flex items-center justify-center gap-2 font-label-md text-label-md">
+<span class="material-symbols-outlined" data-icon="apple" data-weight="fill">ios</span>
+                            Apple
+                        </button>
+</div>
+</form>
+<p class="mt-8 text-center text-on-surface-variant text-label-md font-label-md leading-relaxed">
+                    By continuing, you agree to SmartTax's <br class="hidden md:block"/>
+<a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+                </p>
+</div>
+</div>
+</main>
+<script>
+        // Password Visibility Toggle
+        function togglePassword() {
+            const field = document.getElementById('passwordField');
+            const icon = document.getElementById('passIcon');
+            if (field.type === "password") {
+                field.type = "text";
+                icon.textContent = "visibility_off";
+            } else {
+                field.type = "password";
+                icon.textContent = "visibility";
+            }
+        }
+
+        // Tab Switching Logic
+        function switchTab(tab) {
+            const loginBtn = document.getElementById('loginTab');
+            const registerBtn = document.getElementById('registerTab');
+            const indicator = document.getElementById('tabIndicator');
+
+            if (tab === 'login') {
+                loginBtn.classList.add('text-primary');
+                loginBtn.classList.remove('text-on-surface-variant');
+                registerBtn.classList.add('text-on-surface-variant');
+                registerBtn.classList.remove('text-primary');
+                indicator.style.left = '0px';
+                indicator.style.width = loginBtn.offsetWidth + 'px';
+            } else {
+                registerBtn.classList.add('text-primary');
+                registerBtn.classList.remove('text-on-surface-variant');
+                loginBtn.classList.add('text-on-surface-variant');
+                loginBtn.classList.remove('text-primary');
+                indicator.style.left = (loginBtn.offsetWidth + 32) + 'px'; // 32 is the gap-8
+                indicator.style.width = registerBtn.offsetWidth + 'px';
+            }
+        }
+
+        // Initialize indicator size
+        window.onload = () => {
+            const loginBtn = document.getElementById('loginTab');
+            const indicator = document.getElementById('tabIndicator');
+            indicator.style.width = loginBtn.offsetWidth + 'px';
+        };
+
+        // Subtle Parallax Effect for Illustration
+        const container = document.getElementById('parallaxContainer');
+        const img = document.getElementById('parallaxImage');
+
+        document.addEventListener('mousemove', (e) => {
+            if (window.innerWidth < 768) return; // Disable on mobile for performance
+
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+
+            // Apply translation while preserving the base floating animation's rotation indirectly or via wrapper
+            // Here we combine mouse movement with a slight tilt
+            img.style.transform = `translate(${xAxis}px, ${yAxis}px) rotateY(${xAxis/2}deg) rotateX(${-yAxis/2}deg)`;
+        });
+
+        // Reset on mouse leave
+        container.addEventListener('mouseleave', () => {
+            img.style.transform = `translate(0px, 0px) rotateY(0deg) rotateX(0deg)`;
+        });
+    </script>
+</body></html>
