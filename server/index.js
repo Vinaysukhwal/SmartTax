@@ -26,7 +26,14 @@ const app = express();
 // --- MIDDLEWARE ---
 
 // Enable CORS so the React frontend can talk to this API
-app.use(cors());
+// In production, restrict to the Vercel frontend domain
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN
+    ? process.env.CORS_ORIGIN.split(',')
+    : '*',
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 // Parse JSON request bodies (for POST/PUT requests)
 app.use(express.json({ limit: '10mb' })); // 10mb limit for base64 file uploads
