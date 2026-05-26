@@ -67,7 +67,11 @@ app.use('/api/chat', require('./routes/chat'));
 // --- HEALTH CHECK ---
 // Simple route to verify the server is running
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'SmartTax API is running 🚀' });
+  res.json({
+    status: 'ok',
+    message: 'SmartTax API is running 🚀',
+    corsOrigin: process.env.CORS_ORIGIN || 'NOT_SET'
+  });
 });
 
 // --- START SERVER ---
