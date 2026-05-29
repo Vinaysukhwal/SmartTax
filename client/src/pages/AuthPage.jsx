@@ -128,9 +128,7 @@ const AuthPage = () => {
 
         {/* Header Branding */}
         <div className="z-10 flex items-center gap-3">
-          <div className="w-8 h-8 bg-[#7c3aed] rounded-lg flex items-center justify-center shadow-lg shadow-[#7c3aed]/25">
-            <span className="text-white font-bold text-sm">ST</span>
-          </div>
+          <img src="/logo.png" alt="SmartTax" className="w-9 h-9 rounded-lg object-contain" />
           <span className="font-extrabold text-xl text-[#e8dfee] tracking-tight">SmartTax</span>
         </div>
 
@@ -139,34 +137,15 @@ const AuthPage = () => {
           <div className="relative group">
             <div className="absolute inset-0 bg-[#7c3aed]/20 blur-[60px] rounded-full scale-90 group-hover:scale-110 transition-transform duration-1000"></div>
             <img
-              alt="Futuristic Glass Tax Documents"
-              className="relative w-full max-w-sm object-contain drop-shadow-[0_20px_50px_rgba(124,58,237,0.3)] animate-float"
-              src="https://lh3.googleusercontent.com/aida/ADBb0ujER9lJH887eupa0rl6KzbkpZids4-ysiBI6jcwOfKYEjYyOs1DX5279bKFSPrPz2wagL_HNQMAkFT_96CIs8OiI4YpAVQ9G7lAotpJAnZsSyVgR6QnXAxWAte9ybcCBclgbszZWh_4RAGl9em3Ij7sBzbxzIiD8tkG9IpPYHvI45WwyISWBFVU63c93yxCK2PnolYP0VrthVkAU9lu9FJxsQTUzuFlF9Ikdetmr-WmKNWIeRVXggVekHA"
+              alt="SmartTax"
+              className="relative w-full max-w-[280px] object-contain drop-shadow-[0_20px_50px_rgba(124,58,237,0.3)] animate-float"
+              src="/logo.png"
             />
           </div>
           <h2 className="mt-12 text-3xl font-extrabold text-[#e8dfee]">Modernizing Financial Compliance</h2>
           <p className="mt-4 text-[#ccc3d8] text-base max-w-sm leading-relaxed">
             Experience the next generation of tax filing with real-time analytics and intelligent automation.
           </p>
-        </div>
-
-        {/* Trust Metrics */}
-        <div className="z-10 flex items-center justify-center gap-12 py-6 bg-[#221e28]/30 backdrop-blur-sm rounded-2xl border border-[#4a4455]/20">
-          <div className="flex items-center gap-3">
-            <span className="material-symbols-outlined text-[#d2bbff] text-3xl">verified_user</span>
-            <div className="text-left">
-              <p className="font-extrabold text-[#d2bbff] text-lg leading-none">1M+</p>
-              <p className="text-xs text-[#ccc3d8]">Trusted Taxpayers</p>
-            </div>
-          </div>
-          <div className="w-px h-10 bg-[#4a4455]/30"></div>
-          <div className="flex items-center gap-3">
-            <span className="material-symbols-outlined text-[#d2bbff] text-3xl">lock</span>
-            <div className="text-left">
-              <p className="font-extrabold text-[#d2bbff] text-lg leading-none">AES-256</p>
-              <p className="text-xs text-[#ccc3d8]">Secure & Encrypted</p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -265,6 +244,21 @@ const AuthPage = () => {
                       ) : (
                         'Sign In'
                       )}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setLoginData({
+                          email: 'demo@smarttax.com',
+                          password: 'demouser123',
+                        });
+                        toast.success('Demo credentials loaded! Click Sign In to log on. 🔑');
+                      }}
+                      className="w-full bg-[#221e28] hover:bg-[#2d2838] border border-[#4a4455]/40 text-[#d2bbff] py-3.5 rounded-xl font-bold transition-all duration-300 active:scale-95 flex items-center justify-center gap-1.5 mt-3"
+                    >
+                      <span className="material-symbols-outlined text-[18px]">key</span>
+                      <span>Use Demo Account</span>
                     </button>
                   </form>
                 </div>

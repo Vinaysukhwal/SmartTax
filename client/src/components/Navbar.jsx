@@ -49,52 +49,50 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to={user ? '/dashboard' : '/'} className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 bg-[#7c3aed] rounded-lg flex items-center justify-center shadow-lg shadow-[#7c3aed]/25">
-              <span className="text-white font-bold text-sm">ST</span>
-            </div>
+          <Link to={user ? '/dashboard' : '/'} className="flex items-center space-x-2.5 flex-shrink-0">
+            <img src="/logo.png" alt="SmartTax" className="w-9 h-9 rounded-lg object-contain" />
             <span className="text-xl font-extrabold text-[#e8dfee] tracking-tight">
               Smart<span className="text-[#d2bbff]">Tax</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1.5">
+          <div className="hidden lg:flex items-center space-x-1 xl:space-x-1.5 flex-shrink-0">
             {user ? (
               <>
                 {authLinks.map(({ path, label, icon: Icon }) => (
                   <Link
                     key={path}
                     to={path}
-                    className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200 border ${
+                    className={`flex items-center space-x-1 px-1.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-all duration-200 border ${
                       isActive(path)
                         ? 'bg-[#7c3aed]/10 text-[#d2bbff] border-[#7c3aed]/20'
                         : 'text-[#ccc3d8] hover:text-[#e8dfee] hover:bg-white/5 border-transparent'
                     }`}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-4 h-4 hidden xl:block" />
                     <span>{label}</span>
                   </Link>
                 ))}
 
                 {/* Profile & Logout */}
-                <div className="flex items-center space-x-2 ml-4 pl-4 border-l border-[#4a4455]/30">
+                <div className="flex items-center space-x-1 xl:space-x-2 ml-2 xl:ml-4 pl-2 xl:pl-4 border-l border-[#4a4455]/30">
                   <Link
                     to="/profile"
-                    className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200 border ${
+                    className={`flex items-center space-x-1 px-1.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-all duration-200 border ${
                       isActive('/profile')
                         ? 'bg-[#7c3aed]/10 text-[#d2bbff] border-[#7c3aed]/20'
                         : 'text-[#ccc3d8] hover:text-[#e8dfee] border-transparent'
                     }`}
                   >
-                    <HiOutlineUser className="w-4 h-4" />
+                    <HiOutlineUser className="w-4 h-4 hidden xl:block" />
                     <span>{user.name?.split(' ')[0]}</span>
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-semibold text-red-400 hover:bg-red-500/10 transition-colors duration-200"
+                    className="flex items-center space-x-1 px-1.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold text-red-400 hover:bg-red-500/10 transition-colors duration-200"
                   >
-                    <HiOutlineLogout className="w-4 h-4" />
+                    <HiOutlineLogout className="w-4 h-4 hidden xl:block" />
                     <span>Logout</span>
                   </button>
                 </div>

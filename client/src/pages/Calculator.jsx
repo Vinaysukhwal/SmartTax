@@ -58,8 +58,8 @@ const Calculator = () => {
     const deductionsSum = c80c + c80d + cNps + cHra;
 
     // Use our utility functions
-    const oldRegime = calculateOldRegimeTax(calculatedGross, deductionsSum);
-    const newRegime = calculateNewRegimeTax(calculatedGross);
+    const oldRegime = calculateOldRegimeTax(calculatedGross, deductionsSum, sVal);
+    const newRegime = calculateNewRegimeTax(calculatedGross, sVal);
 
     setGross(calculatedGross);
     setTotalDeductions(deductionsSum + oldRegime.standardDeduction); // standard deduction is included in old total deductions display

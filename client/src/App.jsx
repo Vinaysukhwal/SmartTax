@@ -33,6 +33,7 @@ import DocumentVault from './pages/DocumentVault';
 import NoticesPage from './pages/NoticesPage';
 import ChallanPage from './pages/ChallanPage';
 import Chatbot from './pages/Chatbot';
+import SmartDashboard from './pages/SmartDashboard';
 
 function App() {
   return (
@@ -79,6 +80,7 @@ function App() {
                 <Route path="/notices" element={<ProtectedRoute><NoticesPage /></ProtectedRoute>} />
                 <Route path="/challan" element={<ProtectedRoute><ChallanPage /></ProtectedRoute>} />
                 <Route path="/chatbot" element={<ProtectedRoute><Chatbot /></ProtectedRoute>} />
+                <Route path="/smart-dashboard" element={<ProtectedRoute><SmartDashboard /></ProtectedRoute>} />
               </Routes>
             </main>
 

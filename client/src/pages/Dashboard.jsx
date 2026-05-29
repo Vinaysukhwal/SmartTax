@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import API from '../config/api';
 import toast from 'react-hot-toast';
+import { HiOutlineChevronRight } from 'react-icons/hi';
 
 // Simple easing CountUp Component
 const CountUp = ({ end, duration = 1500, prefix = '₹' }) => {
@@ -92,11 +93,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen text-[#e8dfee] bg-[#0f0f0f] flex font-sans">
       {/* SideNavBar */}
-      <aside className="hidden md:flex fixed h-screen w-64 bg-[#100d16] border-r border-[#4a4455]/20 flex-col py-8 z-30 overflow-y-auto">
-        <div className="px-6 mb-10">
-          <h1 className="font-extrabold text-2xl text-[#d2bbff] tracking-tight">SmartTax</h1>
-          <p className="text-xs text-[#ccc3d8]/70">Premium Tax Console</p>
-        </div>
+      <aside className="hidden md:flex fixed top-16 left-0 h-[calc(100vh-4rem)] w-64 bg-[#100d16] border-r border-[#4a4455]/20 flex-col py-6 z-30 overflow-y-auto">
         <nav className="flex-grow space-y-2 px-4">
           <Link
             to="/dashboard"
@@ -111,6 +108,13 @@ const Dashboard = () => {
           >
             <span className="material-symbols-outlined">description</span>
             <span className="text-sm">Filing</span>
+          </Link>
+          <Link
+            to="/smart-dashboard"
+            className="flex items-center gap-3 px-4 py-3 text-[#ccc3d8] font-semibold hover:bg-[#221e28]/50 hover:text-[#d2bbff] transition-all duration-200 rounded-lg group"
+          >
+            <span className="material-symbols-outlined text-[#d2bbff] group-hover:animate-pulse">magic_button</span>
+            <span className="text-sm">Smart Auto-Fill</span>
           </Link>
           <Link
             to="/documents"
@@ -141,7 +145,7 @@ const Dashboard = () => {
       {/* Main Wrapper */}
       <main className="flex-1 md:ml-64 min-h-screen flex flex-col">
         {/* Top bar controls */}
-        <header className="sticky top-0 h-16 px-8 flex justify-between items-center backdrop-blur-md bg-[#15121b]/30 z-20 border-b border-[#4a4455]/10">
+        <header className="sticky top-16 h-16 px-8 flex justify-between items-center backdrop-blur-md bg-[#15121b]/30 z-20 border-b border-[#4a4455]/10">
           <div className="flex items-center w-1/2">
             <h2 className="font-extrabold text-xl text-[#e8dfee]">Overview</h2>
           </div>
@@ -182,6 +186,27 @@ const Dashboard = () => {
               </Link>
             )}
           </div>
+
+          {/* Smart Auto-Fill Promo Banner */}
+          <Link
+            to="/smart-dashboard"
+            className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gradient-to-r from-[#7c3aed]/90 to-[#ddb7ff]/70 p-6 rounded-3xl relative overflow-hidden group shadow-lg shadow-[#7c3aed]/10 hover:brightness-110 transition-all duration-300"
+          >
+            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="relative z-10 flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white text-2xl flex-shrink-0">
+                <span className="material-symbols-outlined animate-pulse">magic_button</span>
+              </div>
+              <div>
+                <h3 className="text-lg font-extrabold text-white">NEW: Smart Auto-Fill via Document Scan</h3>
+                <p className="text-xs text-white/95 mt-0.5">Upload Form 16, 26AS, AIS, or Interest Certificates to pre-fill ITR in seconds!</p>
+              </div>
+            </div>
+            <div className="relative z-10 bg-white text-[#7c3aed] font-extrabold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow-md group-hover:translate-x-1 transition-transform">
+              <span>Try Smart Auto-Fill</span>
+              <HiOutlineChevronRight className="w-3.5 h-3.5" />
+            </div>
+          </Link>
 
           {/* Hero Stats Row */}
           <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

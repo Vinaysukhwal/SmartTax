@@ -138,8 +138,8 @@ const ItrWizard = () => {
   const totalIncome = calculateTotalIncome();
   const totalDeductions = calculateTotalDeductions();
 
-  const newRegimeTax = calculateNewRegimeTax(totalIncome);
-  const oldRegimeTax = calculateOldRegimeTax(totalIncome, totalDeductions);
+  const newRegimeTax = calculateNewRegimeTax(totalIncome, Number(formData.incomeDetails.grossSalary) || 0);
+  const oldRegimeTax = calculateOldRegimeTax(totalIncome, totalDeductions, Number(formData.incomeDetails.grossSalary) || 0);
 
   // Auto-recommend regime
   const recommendedRegime = newRegimeTax.totalTax <= oldRegimeTax.totalTax ? 'new' : 'old';
@@ -178,6 +178,65 @@ const ItrWizard = () => {
   const handleBack = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const handleClearAll = async () => {
+    if (!window.confirm('Are you sure you want to clear all ITR wizard details? This will delete your current draft.')) return;
+    
+    const clearedData = {
+      personalInfo: {
+        fullName: user?.name || '',
+        pan: user?.pan || '',
+        dob: '',
+        email: user?.email || '',
+        phone: '',
+        address: '',
+        city: '',
+        state: '',
+        pincode: '',
+        bankName: '',
+        accountNumber: '',
+        ifsc: '',
+      },
+      incomeDetails: {
+        grossSalary: '',
+        housePropertyIncome: '',
+        otherIncome: '',
+        interestIncome: '',
+        capitalGainsSTCG: '',
+        capitalGainsLTCG: '',
+        foreignIncome: '',
+        businessIncome: '',
+        businessExpenses: '',
+        presumptiveTurnover: '',
+        presumptiveRate: '8',
+      },
+      deductions: {
+        section80C: '',
+        section80D: '',
+        section80CCD: '',
+        section80E: '',
+        section80G: '',
+      },
+    };
+
+    setFormData(clearedData);
+    setCurrentStep(1);
+    
+    setSaving(true);
+    try {
+      await API.post('/itr/save', {
+        itrType: 'ITR-1',
+        currentStep: 1,
+        status: 'in-progress',
+        formData: clearedData,
+      });
+      toast.success('All ITR wizard details cleared!');
+    } catch (error) {
+      toast.error('Failed to clear details on the server');
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -942,15 +1001,27 @@ const ItrWizard = () => {
       {/* Bottom Sticky Action Footer */}
       <footer className="fixed bottom-0 left-0 w-full z-20 bg-[#100d16]/95 backdrop-blur-2xl border-t border-[#4a4455]/20 h-20 px-6 md:px-12 lg:px-24 flex items-center justify-between">
         
-        {/* Back Button */}
-        <button
-          onClick={handleBack}
-          disabled={currentStep === 1}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#4a4455]/30 text-[#ccc3d8] hover:bg-white/5 transition-all active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed text-sm"
-        >
-          <span className="material-symbols-outlined text-[18px]">arrow_back</span>
-          <span>Back</span>
-        </button>
+        <div className="flex items-center gap-2.5">
+          {/* Back Button */}
+          <button
+            onClick={handleBack}
+            disabled={currentStep === 1}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#4a4455]/30 text-[#ccc3d8] hover:bg-white/5 transition-all active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed text-sm"
+          >
+            <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+            <span>Back</span>
+          </button>
+
+          {/* Clear Details Button */}
+          <button
+            onClick={handleClearAll}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-red-500/20 text-red-400 hover:bg-red-500/10 hover:border-red-500/40 hover:text-red-300 transition-all active:scale-95 text-sm"
+            title="Clear all details and start fresh"
+          >
+            <span className="material-symbols-outlined text-[18px]">restart_alt</span>
+            <span>Clear Details</span>
+          </button>
+        </div>
 
         {/* Status Indicator */}
         <div className="flex items-center gap-2 text-[#ccc3d8]/70 text-xs">

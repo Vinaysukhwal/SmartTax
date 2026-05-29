@@ -9,11 +9,30 @@
 const mongoose = require('mongoose');
 
 const connectDB = async (retries = 5) => {
+  const User = require('../models/User');
   for (let i = 0; i < retries; i++) {
     try {
       // Attempt to connect to MongoDB
       const conn = await mongoose.connect(process.env.MONGODB_URI);
       console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
+      
+      // Seed default demo user if it doesn't exist
+      try {
+        const demoEmail = 'demo@smarttax.com';
+        const demoUser = await User.findOne({ email: demoEmail });
+        if (!demoUser) {
+          console.log('🌱 Seeding default demo user...');
+          await User.create({
+            name: 'Demo User',
+            email: demoEmail,
+            password: 'demouser123', // plain text, pre-save hook will hash it
+            pan: 'ABCDE1234F',
+          });
+          console.log('✅ Demo user seeded successfully!');
+        }
+      } catch (seedErr) {
+        console.error('❌ Database seeding failed:', seedErr.message);
+      }
       return;
     } catch (error) {
       console.error(`❌ MongoDB Connection Error (attempt ${i + 1}/${retries}): ${error.message}`);

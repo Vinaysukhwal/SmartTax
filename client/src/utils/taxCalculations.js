@@ -75,9 +75,9 @@ export const calculateSlabTax = (taxableIncome, slabs) => {
  * @param {number} grossIncome - Total income before any deductions
  * @returns {object} - { taxableIncome, tax, cess, totalTax, effectiveRate }
  */
-export const calculateNewRegimeTax = (grossIncome) => {
+export const calculateNewRegimeTax = (grossIncome, salaryIncome = grossIncome) => {
   // Standard deduction for salaried individuals
-  const standardDeduction = 75000;
+  const standardDeduction = Math.min(75000, salaryIncome);
   const taxableIncome = Math.max(0, grossIncome - standardDeduction);
 
   // Calculate base tax
@@ -87,6 +87,12 @@ export const calculateNewRegimeTax = (grossIncome) => {
   // (This means gross income up to ₹12,75,000 is tax-free under new regime)
   if (taxableIncome <= 1200000) {
     tax = 0;
+  } else {
+    // Under New Regime FY 2025-26, marginal relief is allowed if the tax exceeds the excess income over 12L
+    const excessIncome = taxableIncome - 1200000;
+    if (tax > excessIncome) {
+      tax = excessIncome;
+    }
   }
 
   // Health & Education Cess: 4% of tax
@@ -120,9 +126,9 @@ export const calculateNewRegimeTax = (grossIncome) => {
  * @param {number} totalDeductions - Sum of all deductions (80C + 80D + etc.)
  * @returns {object} - Tax calculation result
  */
-export const calculateOldRegimeTax = (grossIncome, totalDeductions = 0) => {
+export const calculateOldRegimeTax = (grossIncome, totalDeductions = 0, salaryIncome = grossIncome) => {
   // Standard deduction for salaried individuals
-  const standardDeduction = 50000;
+  const standardDeduction = Math.min(50000, salaryIncome);
 
   // Taxable income = Gross - Standard Deduction - Chapter VI-A Deductions
   const taxableIncome = Math.max(0, grossIncome - standardDeduction - totalDeductions);

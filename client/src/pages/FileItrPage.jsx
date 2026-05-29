@@ -152,6 +152,68 @@ const FileItrPage = () => {
   };
 
   /**
+   * Clear all details and reset filing draft to defaults
+   */
+  const handleClearAll = async () => {
+    if (!window.confirm('Are you sure you want to clear all ITR wizard details? This will delete your current draft.')) return;
+    
+    const clearedData = {
+      personalInfo: {
+        fullName: user?.name || '',
+        pan: user?.pan || '',
+        dob: '',
+        email: user?.email || '',
+        phone: '',
+        address: '',
+        city: '',
+        state: '',
+        pincode: '',
+        bankName: '',
+        accountNumber: '',
+        ifsc: '',
+      },
+      incomeDetails: {
+        grossSalary: '',
+        housePropertyIncome: '',
+        otherIncome: '',
+        interestIncome: '',
+        capitalGainsSTCG: '',
+        capitalGainsLTCG: '',
+        foreignIncome: '',
+        businessIncome: '',
+        businessExpenses: '',
+        presumptiveTurnover: '',
+        presumptiveRate: '8',
+      },
+      deductions: {
+        section80C: '',
+        section80D: '',
+        section80CCD: '',
+        section80E: '',
+        section80G: '',
+      },
+    };
+
+    setFormData(clearedData);
+    setCurrentStep(1);
+    
+    setSaving(true);
+    try {
+      await API.post('/itr/save', {
+        itrType: 'ITR-1',
+        currentStep: 1,
+        status: 'in-progress',
+        formData: clearedData,
+      });
+      toast.success('All ITR wizard details cleared!');
+    } catch (error) {
+      toast.error('Failed to clear details on the server');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  /**
    * Navigate to next step (and save)
    */
   const handleNext = async () => {
@@ -625,14 +687,23 @@ const FileItrPage = () => {
           {/* Navigation Buttons (Steps 1-3) */}
           {currentStep < 4 && (
             <div className="flex justify-between mt-8 pt-6 border-t border-gray-100">
-              <button
-                onClick={handleBack}
-                disabled={currentStep === 1}
-                className="btn-secondary disabled:opacity-50 flex items-center"
-              >
-                <HiOutlineArrowLeft className="w-4 h-4 mr-2" />
-                Back
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={handleBack}
+                  disabled={currentStep === 1}
+                  className="btn-secondary disabled:opacity-50 flex items-center"
+                >
+                  <HiOutlineArrowLeft className="w-4 h-4 mr-2" />
+                  Back
+                </button>
+                <button
+                  onClick={handleClearAll}
+                  className="px-4 py-2 rounded-lg text-sm font-medium border border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300 transition-all flex items-center"
+                  title="Clear all details and start fresh"
+                >
+                  Clear Details
+                </button>
+              </div>
               <button onClick={handleNext} className="btn-primary flex items-center">
                 {saving ? 'Saving...' : 'Save & Continue'}
                 <HiOutlineArrowRight className="w-4 h-4 ml-2" />

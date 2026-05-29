@@ -43,6 +43,9 @@ app.use(express.json({ limit: '10mb' })); // 10mb limit for base64 file uploads
 // Auth routes (register, login)
 app.use('/api/auth', require('./routes/auth'));
 
+// Scan and Auto-Fill routes
+app.use('/api/scan', require('./routes/scan'));
+
 // User profile routes (get/update profile)
 app.use('/api/user', require('./routes/user'));
 
