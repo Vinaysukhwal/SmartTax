@@ -1,354 +1,408 @@
 <div align="center">
 
-# 💰 SmartTax
+<!-- GRADIENT HEADER -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:6C5CE7,50:a855f7,100:6C5CE7&height=220&section=header&text=SmartTax&fontSize=80&fontColor=ffffff&fontAlignY=35&desc=AI-Powered%20Indian%20Income%20Tax%20Filing&descSize=18&descColor=ffffffcc&descAlignY=55&animation=fadeIn" width="100%" />
 
-### **AI-Powered Indian Income Tax Filing Platform**
+<br/>
 
-*Intelligent document scanning, automated ITR preparation, and dual-regime tax computation — built for the modern Indian taxpayer.*
+<img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=22&duration=3000&pause=1500&color=A855F7&center=true&vCenter=true&multiline=false&repeat=true&width=650&height=30&lines=Scan+documents+with+Gemini+AI+%E2%9C%A8;Compute+tax+under+Old+%26+New+regimes+%F0%9F%A7%AE;File+ITR-1+to+ITR-4+in+4+steps+%F0%9F%9A%80;Track+deductions%2C+notices+%26+challans+%F0%9F%93%8A" alt="Typing SVG" />
 
-[![Live on vinyx.tech](https://img.shields.io/badge/🌐_Live_Demo-vinyx.tech-6C5CE7?style=for-the-badge&labelColor=0d1117)](https://vinyx.tech)
-[![License: MIT](https://img.shields.io/badge/License-MIT-00D2D3?style=for-the-badge&labelColor=0d1117)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/Vinaysukhwal/SmartTax?style=for-the-badge&color=FFC312&labelColor=0d1117)](https://github.com/Vinaysukhwal/SmartTax/stargazers)
-[![Tech Stack](https://img.shields.io/badge/Stack-React_·_Express_·_MongoDB-E84393?style=for-the-badge&labelColor=0d1117)]()
+<br/><br/>
 
----
+<!-- BADGES ROW -->
+<a href="https://vinyx.tech"><img src="https://img.shields.io/badge/%E2%9C%A8_LIVE_DEMO-vinyx.tech-6C5CE7?style=for-the-badge&labelColor=1a1625" alt="Live Demo" /></a>
+&nbsp;
+<a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-00D2D3?style=for-the-badge&labelColor=1a1625" alt="MIT License" /></a>
+&nbsp;
+<a href="https://github.com/Vinaysukhwal/SmartTax/stargazers"><img src="https://img.shields.io/github/stars/Vinaysukhwal/SmartTax?style=for-the-badge&color=FFC312&labelColor=1a1625&label=%E2%AD%90+Stars" alt="Stars" /></a>
+&nbsp;
+<a href="https://github.com/Vinaysukhwal/SmartTax/network/members"><img src="https://img.shields.io/github/forks/Vinaysukhwal/SmartTax?style=for-the-badge&color=E84393&labelColor=1a1625&label=%F0%9F%94%80+Forks" alt="Forks" /></a>
 
 </div>
 
-## 📱 Interface Preview
+<br/>
 
-### Primary Dashboard — Command Center
-
+<!-- TECH BADGES -->
 <p align="center">
-  <img src="assets/dashboard.png" alt="SmartTax Dashboard" width="100%" />
+<img src="https://img.shields.io/badge/React_19-61DAFB?style=flat-square&logo=react&logoColor=black" />
+<img src="https://img.shields.io/badge/Vite_8-646CFF?style=flat-square&logo=vite&logoColor=white" />
+<img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
+<img src="https://img.shields.io/badge/Express_4-000000?style=flat-square&logo=express&logoColor=white" />
+<img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" />
+<img src="https://img.shields.io/badge/Gemini_AI-8E75B2?style=flat-square&logo=googlegemini&logoColor=white" />
+<img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white" />
+<img src="https://img.shields.io/badge/Vercel-000?style=flat-square&logo=vercel&logoColor=white" />
+<img src="https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=black" />
 </p>
 
-> The main workspace surfaces a unified filing hub with real-time ITR status tracking, a multi-step wizard progress indicator, quick-access tiles for deductions (80C/80D/80CCD), document vault statistics, notice alerts with due-date countdowns, and contextual action cards for the active assessment year. The sidebar navigation provides one-click routing to every module in the platform.
-
 ---
 
-### Analytics & Smart Processing View
-
-<p align="center">
-  <img src="assets/analytics.png" alt="SmartTax Analytics" width="100%" />
-</p>
-
-> The analytics workspace showcases SmartTax's AI-driven intelligence layer — Gemini-powered document scanning results with confidence scores, a dual-regime tax comparison (Old vs New for FY 2025-26), interactive Recharts-based slab breakdowns, TDS reconciliation tables aggregated from Form 16/26AS/AIS, and a real-time refund/payable estimator with regime recommendation engine.
-
----
-
-## ⚙️ Tech Stack
-
-| Layer | Technologies |
-|---|---|
-| **Frontend UI** | React 19 · React Router 7 · Tailwind CSS 3 · Recharts · React Dropzone · jsPDF |
-| **Core Logic** | Dual-regime tax engine (Old & New FY 2025-26) · Slab calculator · HRA/Capital Gains modules · Auto-fill compiler |
-| **AI Services** | Google Gemini 2.5 Flash (multimodal vision) · Structured JSON extraction · Multi-model fallback chain |
-| **Backend API** | Express 4 · JWT auth · bcrypt · Multer · pdf-parse · Sharp |
-| **Data Layer** | MongoDB (Mongoose 8) · 6 collections (User, ItrFiling, Document, Deduction, Notice, Challan) |
-| **Infrastructure** | Vercel (frontend) · Render (API) · MongoDB Atlas · CORS-secured REST API |
-
----
-
-## 🏗️ System Architecture
-
-```mermaid
-flowchart TB
-    subgraph CLIENT["Frontend — React + Vite"]
-        LP[Landing Page]
-        AUTH[Auth Page]
-        DASH[Dashboard]
-        WIZARD[ITR Wizard — 4-Step]
-        CALC[Tax Calculator]
-        VAULT[Document Vault]
-        DED[Deductions Tracker]
-        NOTICE[Notice Manager]
-        CHALLAN[Challan Generator]
-        SDASH[Smart Dashboard]
-        CHATBOT[AI Chatbot Widget]
-    end
-
-    subgraph API["Backend — Express API"]
-        direction TB
-        MW[JWT Auth Middleware]
-        R_AUTH["/api/auth — Register & Login"]
-        R_USER["/api/user — Profile CRUD"]
-        R_ITR["/api/itr — Filing Save/Load"]
-        R_SCAN["/api/scan — Document Scan"]
-        R_DOCS["/api/documents — Vault CRUD"]
-        R_DED["/api/deductions — Tracker CRUD"]
-        R_NOT["/api/notices — Notice CRUD"]
-        R_CHAL["/api/challan — Generator"]
-        R_CHAT["/api/chat — Gemini Proxy"]
-    end
-
-    subgraph SERVICES["Processing Engine"]
-        SCANNER["Document Scanner<br/>PDF parse + Gemini Vision"]
-        AUTOFILL["Auto-Fill Engine<br/>Tax computation + regime comparison"]
-    end
-
-    subgraph DATA["Data Layer"]
-        MONGO[(MongoDB Atlas)]
-        GEMINI[Google Gemini API]
-    end
-
-    CLIENT -- "Axios + JWT" --> MW
-    MW --> API
-    R_SCAN --> SCANNER
-    SCANNER --> GEMINI
-    SCANNER --> AUTOFILL
-    API --> MONGO
-    R_CHAT --> GEMINI
-```
-
----
-
-## 🔑 Core Features
+## 📸 Screenshots
 
 <table>
 <tr>
-<td width="50%">
+<td>
 
-### 📄 AI Document Scanner
-Drag-and-drop Form 16, 26AS, AIS, Form 16A, bank certificates, and capital gains statements. The Gemini multimodal vision API extracts structured financial data with confidence scoring — no manual data entry.
+<div align="center">
+<strong>🏠 Dashboard — Filing Command Center</strong>
+</div>
 
-### 🧮 Dual-Regime Tax Engine
-Full slab-based computation for both Old and New regimes (FY 2025-26 / AY 2026-27) with Section 87A rebate logic, marginal relief, surcharge tiers, and 4% Health & Education cess.
+<br/>
 
-### 🧙 4-Step ITR Wizard
-Guided filing flow covering Personal Info → Income Details → Deductions (80C/80D/80CCD/80E/80G) → Tax Computation with auto-save, progress tracking, and regime recommendation.
+<img src="assets/dashboard.png" alt="SmartTax Dashboard" width="100%" />
+
+<br/>
+
+<sup>Real-time ITR status • Wizard progress tracker • Deduction tiles (80C/80D/80CCD) • Document vault stats • Notice alerts with due-date countdowns • Quick-action cards for active AY</sup>
 
 </td>
-<td width="50%">
+</tr>
+<tr>
+<td>
 
-### 📊 Smart Dashboard
-AI-powered analytics with Recharts visualizations — income breakdowns, slab-wise tax distribution, TDS reconciliation, and Old vs New regime comparison with automatic recommendation.
+<div align="center">
+<strong>📊 Smart Analytics — AI Processing View</strong>
+</div>
 
-### 🗄️ Document Vault
-Encrypted document storage with base64 persistence, file type detection, upload history, and direct integration with the scan engine for instant auto-fill.
+<br/>
 
-### 🤖 AI Tax Assistant
-Gemini-powered conversational chatbot for real-time tax queries, section explanations, and regime-specific guidance — available as a floating widget on every page.
+<img src="assets/analytics.png" alt="SmartTax Analytics" width="100%" />
+
+<br/>
+
+<sup>Gemini-powered scan results with confidence scores • Dual-regime tax comparison (Old vs New FY 2025-26) • Recharts slab breakdowns • TDS reconciliation from Form 16/26AS/AIS • Refund estimator with regime recommendation</sup>
 
 </td>
 </tr>
 </table>
 
-### Additional Modules
+---
 
-| Module | Capability |
-|---|---|
-| **ITR Recommender** | Analyzes income sources to suggest the correct ITR form (ITR-1 through ITR-4) |
-| **Deductions Tracker** | CRUD interface with progress bars showing utilization against section-wise limits |
-| **Notice Manager** | Track IT department notices with type classification, due dates, and status workflow |
-| **Challan 280 Generator** | Compute and generate tax payment challans with surcharge and cess breakdown |
-| **Tax Calculator** | Standalone calculators for income tax, HRA exemption, and capital gains (STCG/LTCG) |
-| **Profile Manager** | User profile with PAN validation (regex: `^[A-Z]{5}[0-9]{4}[A-Z]$`), address, and bank details |
+## ✨ Features
+
+<table>
+<tr>
+<td align="center" width="33%">
+<br/>
+<img src="https://img.icons8.com/fluency/48/artificial-intelligence.png" width="36" />
+<br/><br/>
+<strong>AI Document Scanner</strong>
+<br/><br/>
+<sub>Drag-and-drop Form 16, 26AS, AIS, Form 16A, bank certificates & capital gains statements. Gemini multimodal vision extracts structured data with confidence scoring.</sub>
+<br/><br/>
+</td>
+<td align="center" width="33%">
+<br/>
+<img src="https://img.icons8.com/fluency/48/calculator.png" width="36" />
+<br/><br/>
+<strong>Dual-Regime Tax Engine</strong>
+<br/><br/>
+<sub>Full slab computation for Old & New regimes (FY 2025-26) with Section 87A rebate, marginal relief, surcharge tiers, and 4% Health & Education cess.</sub>
+<br/><br/>
+</td>
+<td align="center" width="33%">
+<br/>
+<img src="https://img.icons8.com/fluency/48/wizard-male.png" width="36" />
+<br/><br/>
+<strong>4-Step ITR Wizard</strong>
+<br/><br/>
+<sub>Guided filing: Personal Info → Income → Deductions (80C/80D/80CCD/80E/80G) → Tax Computation with auto-save and regime recommendation.</sub>
+<br/><br/>
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+<br/>
+<img src="https://img.icons8.com/fluency/48/dashboard-layout.png" width="36" />
+<br/><br/>
+<strong>Smart Dashboard</strong>
+<br/><br/>
+<sub>AI-powered analytics with Recharts — income breakdowns, slab distribution, TDS reconciliation, and Old vs New regime comparison.</sub>
+<br/><br/>
+</td>
+<td align="center" width="33%">
+<br/>
+<img src="https://img.icons8.com/fluency/48/safe.png" width="36" />
+<br/><br/>
+<strong>Document Vault</strong>
+<br/><br/>
+<sub>Secure document storage with base64 persistence, file type detection, upload history, and direct integration with the scan engine.</sub>
+<br/><br/>
+</td>
+<td align="center" width="33%">
+<br/>
+<img src="https://img.icons8.com/fluency/48/chatbot.png" width="36" />
+<br/><br/>
+<strong>AI Tax Assistant</strong>
+<br/><br/>
+<sub>Gemini-powered chatbot for real-time tax queries, section explanations, and regime guidance — floating widget on every page.</sub>
+<br/><br/>
+</td>
+</tr>
+</table>
+
+<details>
+<summary><strong>📋 See all modules</strong></summary>
+<br/>
+
+| Module | What it does |
+|:---|:---|
+| **ITR Recommender** | Analyzes income sources → suggests correct form (ITR-1 through ITR-4) |
+| **Deductions Tracker** | CRUD interface with progress bars against section-wise limits |
+| **Notice Manager** | Track IT notices with type classification, due dates & status workflow |
+| **Challan 280 Generator** | Compute and generate payment challans with surcharge + cess breakdown |
+| **Tax Calculator** | Standalone calculators for income tax, HRA exemption & capital gains |
+| **Profile Manager** | PAN validation (`^[A-Z]{5}[0-9]{4}[A-Z]$`), address & bank details |
+
+</details>
 
 ---
 
-## 🚀 Getting Started
+## 🏗️ Architecture
 
-### Prerequisites
+```mermaid
+flowchart LR
+    subgraph Frontend["⚛️ React + Vite"]
+        direction TB
+        Pages["14 Pages<br/><sub>Dashboard · Wizard · Calculator<br/>Vault · Chatbot · Analytics</sub>"]
+        Components["4 Shared Components<br/><sub>Navbar · Footer · ChatBot · ProtectedRoute</sub>"]
+        TaxEngine["Client Tax Engine<br/><sub>Old & New regime computation</sub>"]
+    end
 
-| Requirement | Version |
-|---|---|
-| Node.js | `≥ 18.x` |
-| npm | `≥ 9.x` |
-| MongoDB | Atlas (cloud) or local `≥ 6.x` |
-| Google Gemini API Key | [Get one free →](https://aistudio.google.com/apikey) |
+    subgraph Backend["🟢 Express API"]
+        direction TB
+        Auth["🔐 JWT Auth Middleware"]
+        Routes["9 Route Handlers<br/><sub>auth · user · itr · scan · documents<br/>deductions · notices · challan · chat</sub>"]
+    end
 
-### Installation
+    subgraph Services["🧠 AI Engine"]
+        Scanner["Document Scanner<br/><sub>pdf-parse + Gemini Vision</sub>"]
+        AutoFill["Auto-Fill Engine<br/><sub>Data mapping + tax computation</sub>"]
+    end
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/Vinaysukhwal/SmartTax.git
-cd SmartTax
+    subgraph External["☁️ Cloud"]
+        Gemini["Google Gemini API<br/><sub>2.5 Flash → 2.0 Flash → Lite</sub>"]
+        Mongo[("MongoDB Atlas<br/><sub>6 collections</sub>")]
+    end
 
-# 2. Install server dependencies
-cd server
-npm install
-
-# 3. Configure server environment
-cp .env.example .env
-# Edit .env and set:
-#   MONGODB_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/smarttax
-#   JWT_SECRET=your-secure-secret-key
-#   GEMINI_API_KEY=your-gemini-api-key
-#   CORS_ORIGIN=http://localhost:5173
-
-# 4. Install client dependencies
-cd ../client
-npm install
-
-# 5. Configure client environment
-echo "VITE_API_URL=http://localhost:5000/api" > .env
-```
-
-### Running Locally
-
-```bash
-# Terminal 1 — Start the API server (port 5000)
-cd server
-npm run dev
-
-# Terminal 2 — Start the React dev server (port 5173)
-cd client
-npm run dev
-```
-
-Open **http://localhost:5173** — a demo account (`demo@smarttax.com` / `demouser123`) is auto-seeded on first launch.
-
-### Production Build
-
-```bash
-# Build optimized client bundle
-cd client
-npm run build
-
-# The output in client/dist/ is deployed to Vercel
-# The server is deployed to Render via render.yaml
+    Frontend -- "Axios + Bearer Token" --> Auth
+    Auth --> Routes
+    Routes --> Scanner
+    Scanner --> Gemini
+    Scanner --> AutoFill
+    Routes --> Mongo
+    Routes --> Gemini
 ```
 
 ---
 
-## 📁 Project Structure
+## 🚀 Quick Start
+
+> **Prerequisites:** Node.js `≥ 18`, npm `≥ 9`, [MongoDB Atlas](https://www.mongodb.com/atlas) account, [Gemini API key](https://aistudio.google.com/apikey)
+
+### 1️⃣ Clone & Install
+
+```bash
+git clone https://github.com/Vinaysukhwal/SmartTax.git && cd SmartTax
+```
+
+```bash
+# Install both client and server
+cd server && npm install && cd ../client && npm install && cd ..
+```
+
+### 2️⃣ Configure Environment
+
+```bash
+# Server
+cd server && cp .env.example .env
+```
+
+Edit `server/.env`:
+```env
+MONGODB_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/smarttax
+JWT_SECRET=your-secret-key
+GEMINI_API_KEY=your-gemini-api-key
+CORS_ORIGIN=http://localhost:5173
+```
+
+```bash
+# Client
+echo "VITE_API_URL=http://localhost:5000/api" > client/.env
+```
+
+### 3️⃣ Launch
+
+```bash
+# Terminal 1 — API (port 5000)
+cd server && npm run dev
+
+# Terminal 2 — UI (port 5173)
+cd client && npm run dev
+```
+
+Open **http://localhost:5173** — demo account `demo@smarttax.com` / `demouser123` is auto-seeded.
+
+---
+
+<details>
+<summary><strong>📁 Project Structure</strong></summary>
+<br/>
 
 ```
 SmartTax/
-├── client/                          # React 19 + Vite frontend
-│   ├── src/
-│   │   ├── pages/                   # 14 page-level components
-│   │   │   ├── LandingPage.jsx      #   → Public marketing page
-│   │   │   ├── AuthPage.jsx         #   → Login & registration
-│   │   │   ├── Dashboard.jsx        #   → Main user dashboard
-│   │   │   ├── SmartDashboard.jsx   #   → AI analytics workspace
-│   │   │   ├── ItrWizard.jsx        #   → 4-step ITR filing wizard
-│   │   │   ├── Calculator.jsx       #   → Tax/HRA/Capital gains calc
-│   │   │   ├── DocumentVault.jsx    #   → File upload & management
-│   │   │   ├── DeductionsPage.jsx   #   → Section-wise deduction tracker
-│   │   │   ├── NoticesPage.jsx      #   → IT notice manager
-│   │   │   ├── ChallanPage.jsx      #   → Challan 280 generator
-│   │   │   ├── Chatbot.jsx          #   → Full-page AI assistant
-│   │   │   ├── ItrRecommenderPage   #   → ITR form selector
-│   │   │   ├── FileItrPage.jsx      #   → Filing entry point
-│   │   │   └── ProfilePage.jsx      #   → User profile editor
-│   │   ├── components/              # Shared UI components
-│   │   │   ├── Navbar.jsx           #   → Top navigation bar
-│   │   │   ├── Footer.jsx           #   → Site footer
-│   │   │   ├── ChatBot.jsx          #   → Floating AI widget
-│   │   │   └── ProtectedRoute.jsx   #   → Auth route guard
-│   │   ├── context/                 # React Context providers
-│   │   │   ├── AuthContext.jsx      #   → JWT auth state manager
-│   │   │   └── LoadingContext.jsx   #   → Global loading state
-│   │   ├── utils/
-│   │   │   └── taxCalculations.js   #   → Client-side tax engine
-│   │   ├── config/
-│   │   │   └── api.js               #   → Axios instance config
-│   │   ├── App.jsx                  #   → Root component + routing
-│   │   └── main.jsx                 #   → Vite entry point
-│   ├── tailwind.config.js
-│   ├── vite.config.js
-│   └── vercel.json                  # SPA rewrite rules
 │
-├── server/                          # Express 4 REST API
-│   ├── index.js                     # Server entry — route mounting
-│   ├── config/
-│   │   └── db.js                    # MongoDB connection + demo seed
-│   ├── middleware/
-│   │   └── auth.js                  # JWT verification middleware
-│   ├── models/                      # Mongoose schemas
-│   │   ├── User.js                  #   → bcrypt-hashed user accounts
-│   │   ├── ItrFiling.js             #   → ITR form data (flexible Mixed)
-│   │   ├── Document.js              #   → Base64 file storage
-│   │   ├── Deduction.js             #   → Section-wise deductions
-│   │   ├── Notice.js                #   → IT notice tracking
-│   │   └── Challan.js               #   → Tax payment records
-│   ├── routes/                      # Express route handlers
-│   │   ├── auth.js                  #   → Register + Login
-│   │   ├── user.js                  #   → Profile CRUD
-│   │   ├── itr.js                   #   → ITR filing save/load
-│   │   ├── scan.js                  #   → Document scan orchestrator
-│   │   ├── documents.js             #   → Vault CRUD
-│   │   ├── deductions.js            #   → Deduction CRUD
-│   │   ├── notices.js               #   → Notice CRUD
-│   │   ├── challan.js               #   → Challan CRUD
-│   │   └── chat.js                  #   → Gemini chat proxy
-│   ├── services/                    # Business logic layer
-│   │   ├── documentScanner.js       #   → Gemini vision extraction
-│   │   └── autoFillEngine.js        #   → Tax computation engine
-│   └── render.yaml                  # Render deployment config
+├─ client/                           ⚛️  React 19 + Vite
+│  └─ src/
+│     ├─ pages/                      14 page components
+│     │  ├─ Dashboard.jsx               Main filing hub
+│     │  ├─ SmartDashboard.jsx          AI analytics workspace
+│     │  ├─ ItrWizard.jsx               4-step ITR filing wizard
+│     │  ├─ Calculator.jsx              Tax / HRA / Cap gains
+│     │  ├─ DocumentVault.jsx           File upload & management
+│     │  ├─ DeductionsPage.jsx          Section-wise tracker
+│     │  ├─ NoticesPage.jsx             IT notice manager
+│     │  ├─ ChallanPage.jsx             Challan 280 generator
+│     │  ├─ Chatbot.jsx                 Full-page AI assistant
+│     │  ├─ AuthPage.jsx                Login & registration
+│     │  ├─ LandingPage.jsx             Marketing page
+│     │  ├─ ProfilePage.jsx             User profile editor
+│     │  ├─ ItrRecommenderPage.jsx      ITR form selector
+│     │  └─ FileItrPage.jsx             Filing entry point
+│     ├─ components/                 Navbar, Footer, ChatBot, ProtectedRoute
+│     ├─ context/                    AuthContext, LoadingContext
+│     ├─ utils/taxCalculations.js    Client-side tax engine
+│     ├─ config/api.js               Axios instance
+│     └─ App.jsx                     Root + routing
 │
-├── assets/                          # Project screenshots
-├── CONTRIBUTING.md
-├── AGENTS.md
-└── README.md
+├─ server/                           🟢 Express 4 REST API
+│  ├─ index.js                       Entry point + route mounting
+│  ├─ config/db.js                   MongoDB connection + retry + seed
+│  ├─ middleware/auth.js             JWT verification
+│  ├─ models/                        6 Mongoose schemas
+│  │  ├─ User.js                        bcrypt-hashed accounts
+│  │  ├─ ItrFiling.js                   Flexible Mixed form data
+│  │  ├─ Document.js                    Base64 file storage
+│  │  ├─ Deduction.js                   Section-wise deductions
+│  │  ├─ Notice.js                      IT notice tracking
+│  │  └─ Challan.js                     Tax payment records
+│  ├─ routes/                        9 Express route handlers
+│  └─ services/
+│     ├─ documentScanner.js          Gemini vision extraction
+│     └─ autoFillEngine.js           Tax computation engine
+│
+├─ assets/                           Screenshots
+├─ .github/                          Issue & PR templates
+├─ AGENTS.md                         AI/developer instructions
+├─ CONTRIBUTING.md                   Contribution guidelines
+├─ SECURITY.md                       Security policy
+├─ LICENSE                           MIT License
+└─ render.yaml                       Render deployment config
 ```
 
----
+</details>
 
-## 📊 Data Models
+<details>
+<summary><strong>📊 Data Models</strong></summary>
+<br/>
 
+```mermaid
+erDiagram
+    User ||--o{ ItrFiling : "files"
+    User ||--o{ Document : "uploads"
+    User ||--o{ Deduction : "claims"
+    User ||--o{ Notice : "receives"
+    User ||--o{ Challan : "generates"
+
+    User {
+        string name
+        string email
+        string password "bcrypt hashed"
+        string pan "ABCDE1234F"
+        string phone
+        object address
+    }
+
+    ItrFiling {
+        string itrType "ITR-1 to ITR-4"
+        string assessmentYear "2026-27"
+        string status "not-started | in-progress | filed"
+        int currentStep "1-4"
+        mixed formData "Flexible JSON"
+    }
+
+    Document {
+        string fileName
+        string fileType
+        int fileSize
+        string fileData "Base64 encoded"
+    }
+
+    Deduction {
+        string section "80C | 80D | 80CCD | 80E | 80G"
+        number amount
+        string description
+        string financialYear
+    }
+
+    Notice {
+        string noticeType
+        date dateReceived
+        date dueDate
+        string status "Pending | Responded | Resolved"
+        string notes
+    }
+
+    Challan {
+        string assessmentYear
+        number taxAmount
+        number surcharge
+        number cess
+        number totalAmount
+        string paymentType
+    }
 ```
-┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│     User     │────<│  ItrFiling   │     │   Document   │
-│──────────────│     │──────────────│     │──────────────│
-│ name         │     │ itrType      │     │ fileName     │
-│ email        │     │ assessmentYr │     │ fileType     │
-│ password ⊕   │     │ status       │     │ fileSize     │
-│ pan          │     │ currentStep  │     │ fileData ◆   │
-│ phone        │     │ formData {}  │     └──────────────┘
-│ address {}   │     └──────────────┘            │
-└──────────────┘            │               userId ref
-       │            ┌──────────────┐     ┌──────────────┐
-       ├───────────<│  Deduction   │     │   Challan    │
-       │            │──────────────│     │──────────────│
-       │            │ section      │     │ assessmentYr │
-       │            │ amount       │     │ taxAmount    │
-       │            │ description  │     │ surcharge    │
-       │            │ financialYr  │     │ cess         │
-       │            └──────────────┘     │ totalAmount  │
-       │                                 │ paymentType  │
-       └────────────────────────────────<└──────────────┘
-                    ┌──────────────┐
-                    │    Notice    │
-                    │──────────────│
-              ──────│ noticeType   │
-                    │ dateReceived │
-                    │ dueDate      │
-                    │ status       │
-                    │ notes        │
-                    └──────────────┘
 
-⊕ = bcrypt hashed    ◆ = base64 encoded    {} = Mixed/flexible schema
-```
+</details>
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions from the community. Please read our **[Contributing Guide](CONTRIBUTING.md)** for detailed guidelines on:
+Contributions are welcome! Please read the **[Contributing Guide](CONTRIBUTING.md)** before opening a PR.
 
-- Forking and branching conventions
-- Commit message standards (Conventional Commits)
-- Pull request process and code review expectations
+```bash
+fork → git checkout -b feature/your-feature → commit → push → PR
+```
+
+See also: [Security Policy](SECURITY.md) · [Code of Conduct](CONTRIBUTING.md#code-of-conduct)
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+Distributed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
 ---
 
 <div align="center">
 
-**Built with precision by [vinyx.tech](https://vinyx.tech)**
+<br/>
 
-[![Deploy on Vercel](https://img.shields.io/badge/Frontend-Vercel-black?style=flat-square&logo=vercel)](https://vercel.com)
-[![Deploy on Render](https://img.shields.io/badge/Backend-Render-46E3B7?style=flat-square&logo=render)](https://render.com)
-[![MongoDB Atlas](https://img.shields.io/badge/Database-MongoDB_Atlas-47A248?style=flat-square&logo=mongodb)](https://www.mongodb.com/atlas)
+<strong>Built by <a href="https://vinyx.tech">vinyx.tech</a></strong>
 
-⭐ Star this repo if SmartTax saved you time this tax season
+<br/>
+
+<a href="https://vinyx.tech"><img src="https://img.shields.io/badge/Portfolio-vinyx.tech-6C5CE7?style=flat-square&logo=googlechrome&logoColor=white" /></a>
+&nbsp;
+<a href="https://github.com/Vinaysukhwal"><img src="https://img.shields.io/badge/GitHub-Vinaysukhwal-181717?style=flat-square&logo=github&logoColor=white" /></a>
+
+<br/><br/>
+
+**If SmartTax helped you, consider giving it a ⭐**
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:6C5CE7,50:a855f7,100:6C5CE7&height=100&section=footer" width="100%" />
 
 </div>
