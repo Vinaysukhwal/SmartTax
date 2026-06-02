@@ -20,9 +20,9 @@
 <img src="https://img.shields.io/badge/‎ ‎ ‎-‎-0d1117?style=for-the-badge&labelColor=0d1117" />
 <a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-00D2D3?style=for-the-badge&labelColor=1a1625" alt="MIT License" /></a>
 <img src="https://img.shields.io/badge/‎ ‎ ‎-‎-0d1117?style=for-the-badge&labelColor=0d1117" />
-<a href="https://github.com/Vinaysukhwal/SmartTax/stargazers"><img src="https://img.shields.io/github/stars/Vinaysukhwal/SmartTax?style=for-the-badge&color=FFC312&labelColor=1a1625&label=⭐+Stars" alt="Stars" /></a>
+<a href="https://github.com/Vinaysukhwal/SmartTax/stargazers"><img src="https://img.shields.io/github/stars/Vinaysukhwal/SmartTax?style=for-the-badge&color=FFC312&labelColor=1a1625&label=Stars" alt="Stars" /></a>
 <img src="https://img.shields.io/badge/‎ ‎ ‎-‎-0d1117?style=for-the-badge&labelColor=0d1117" />
-<a href="https://github.com/Vinaysukhwal/SmartTax/network/members"><img src="https://img.shields.io/github/forks/Vinaysukhwal/SmartTax?style=for-the-badge&color=E84393&labelColor=1a1625&label=🔀+Forks" alt="Forks" /></a>
+<a href="https://github.com/Vinaysukhwal/SmartTax/network/members"><img src="https://img.shields.io/github/forks/Vinaysukhwal/SmartTax?style=for-the-badge&color=E84393&labelColor=1a1625&label=Forks" alt="Forks" /></a>
 
 <br/><br/>
 
@@ -82,7 +82,7 @@
 <td align="center" width="33%">
 <br/>
 <picture>
-  <img src="https://img.icons8.com/3d-fluency/94/artificial-intelligence.png" width="50" alt="AI" />
+  <img src="https://img.icons8.com/3d-fluency/94/brain.png" width="50" alt="AI" />
 </picture>
 <br/><br/>
 <b>AI Document Scanner</b>
@@ -108,7 +108,7 @@ rebate, marginal relief, surcharge & 4% cess.
 <td align="center" width="33%">
 <br/>
 <picture>
-  <img src="https://img.icons8.com/3d-fluency/94/magic-wand.png" width="50" alt="Wizard" />
+  <img src="https://img.icons8.com/3d-fluency/94/wizard.png" width="50" alt="Wizard" />
 </picture>
 <br/><br/>
 <b>4-Step ITR Wizard</b>
@@ -411,7 +411,7 @@ fork → git checkout -b feature/your-idea → commit → push → pull request
 
 <div align="center">
 
-[![Open Issues](https://img.shields.io/github/issues/Vinaysukhwal/SmartTax?style=for-the-badge&color=6C5CE7&labelColor=1a1625&label=🐛+Open+Issues)](https://github.com/Vinaysukhwal/SmartTax/issues)
+[![Open Issues](https://img.shields.io/github/issues/Vinaysukhwal/SmartTax?style=for-the-badge&color=6C5CE7&labelColor=1a1625&label=Open%20Issues)](https://github.com/Vinaysukhwal/SmartTax/issues)
 &nbsp;&nbsp;
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-00D2D3?style=for-the-badge&labelColor=1a1625)](https://github.com/Vinaysukhwal/SmartTax/pulls)
 
