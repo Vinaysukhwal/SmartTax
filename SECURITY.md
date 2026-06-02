@@ -12,7 +12,7 @@ If you discover a security vulnerability in SmartTax, please report it responsib
 
 **Do NOT open a public GitHub issue for security vulnerabilities.**
 
-Instead, email the maintainer directly at **vinaysukhwal@gmail.com** with:
+Instead, email the maintainer directly at **sukhwal.vinay11@gmail.com** with:
 
 1. A description of the vulnerability
 2. Steps to reproduce the issue
