@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discussions
+    url: https://github.com/Vinaysukhwal/SmartTax/discussions
+    about: Ask questions, share ideas, or start a conversation about SmartTax
+  - name: 🌐 Live Demo
+    url: https://vinyx.tech
+    about: Try SmartTax live before reporting issues
